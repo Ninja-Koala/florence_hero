@@ -1,10 +1,9 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+onready var song_seq = $SongSequencer
+onready var note_player = $NotePlayer
+onready var demo_song_resource = load("res://songs/DemoSong.gd")
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	song_seq.initialize(note_player, demo_song_resource.new())
+	

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sprites/lines.png" type="Texture" id=1]
 [ext_resource path="res://sprites/bar1.png" type="Texture" id=2]
 [ext_resource path="res://sprites/bar3.png" type="Texture" id=3]
+[ext_resource path="res://scenes/SongSequencer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/NotePlayer.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -21,5 +23,9 @@ texture = ExtResource( 2 )
 
 position = Vector2( 208.713, 56.9216 )
 texture = ExtResource( 3 )
+
+[node name="SongSequencer" parent="." instance=ExtResource( 4 )]
+
+[node name="NotePlayer" parent="." instance=ExtResource( 5 )]
 
 

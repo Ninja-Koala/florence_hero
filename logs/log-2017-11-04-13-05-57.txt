@@ -2,3 +2,5 @@ OpenGL ES 3.0 Renderer: Mesa DRI Intel(R) Sandybridge Mobile
 GLES3: max ubo light: 409
 GLES3: max ubo reflections: 455, ubo size: 144
 Registered interface Native mobile
+**ERROR**: Node not found: SongSequencer
+   At: scene/main/node.cpp:1518:get_node() - Condition ' !node ' is true. returned: __null
