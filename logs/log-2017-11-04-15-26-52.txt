@@ -28,40 +28,6 @@ missed: missed
 missed: late
 missed: missed
 missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
-missed: missed
-missed: late
 **ERROR**: Condition ' _first != __null ' is true.
    At: core/self_list.h:99:~List() - Condition ' _first != __null ' is true.
 **ERROR**: Condition ' _first != __null ' is true.
