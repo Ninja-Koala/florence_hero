@@ -7,14 +7,15 @@ onready var eye_pupils     = $"Gesicht/Pupillen"
 onready var chin           = $"Gesicht/Unterlippe"
 onready var upper_lip      = $"Gesicht/Oberlippe"
 onready var cheeks         = $"Gesicht/Bäckchen"
-onready var face           = $Gesicht
+onready var face           = $"Gesicht"
 
 var chin_transform
 var upper_lip_transform
 var eye_pupils_transform
 var face_transform
 
-var face_position = 0
+var target_face_position = 0
+var cur_face_position = 0
 
 var eyes_closed = false
 var eye_blink_time = 0
@@ -86,7 +87,16 @@ func tilt_face (pos):
 		
 	face.transform = face_transform * Transform2D (pos * PI, Vector2 (70,30) * pos)
 
+func recalc_face_tilt ():
+	var delta
 
+	delta = target_face_position - cur_face_position
+	if abs (delta) > 0.2:
+		delta *= 0.2
+		delta = clamp (delta, -0.2, 0.2)
+
+	cur_face_position += delta
+	tilt_face (cur_face_position)
 
 func _input (event):
 	if event.is_action_pressed ("face_smile"):
@@ -112,16 +122,18 @@ func _input (event):
 		eyes_position (true, eye_pupils_position)
 
 	if event.is_action_pressed ("face_nod_reset"):
-		face_position = 0
-		tilt_face (face_position)
+		if target_face_position < -0.5:
+			target_face_position = 0
+		elif target_face_position < 0.5:
+			target_face_position = 1
+		else:
+			target_face_position = -1
 
 	if event.is_action_pressed ("face_nod_forward"):
-		face_position = clamp (face_position + 0.1, -1.0, 1.0)
-		tilt_face (face_position)
-		
+		target_face_position = clamp (target_face_position + 0.1, -1.0, 1.0)
+
 	if event.is_action_pressed ("face_nod_backward"):
-		face_position = clamp (face_position - 0.1, -1.0, 1.0)
-		tilt_face (face_position)
+		target_face_position = clamp (target_face_position - 0.1, -1.0, 1.0)
 
 
 func _process (delta):
@@ -136,3 +148,5 @@ func _process (delta):
 
 	open_mouth ((1 + sin (3 * (eye_blink_time / 2.0 * PI))) / 2)
 
+
+	recalc_face_tilt ()
