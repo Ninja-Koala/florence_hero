@@ -6,9 +6,9 @@ onready var class_song_reader = load("res://classes/SongReader.gd")
 onready var demo_song_resource = load("res://songs/DemoSong.gd")
 onready var song = load("res://classes/Song.gd")
 onready var single_bar = load("res://scenes/note.tscn")
-onready var bar_begin = load("res://scenes/note_begin.tscn")
-onready var bar_held = load("res://scenes/note_held.tscn")
-onready var bar_end = load("res://scenes/note_end.tscn")
+onready var bar_begin = load("res://scenes/bar_begin.tscn")
+onready var bar_held = load("res://scenes/bar_held.tscn")
+onready var bar_end = load("res://scenes/bar_end.tscn")
 
 var note_bars = []
 var note_bar_pos = []
@@ -40,6 +40,7 @@ func _process(delta):
 		for i in range(4):
 			for j in range(4):
 					if note_array[i][j] == song.NoteType.Single:
+						print("single")
 						var bar = single_bar.instance()
 						add_child(bar)
 						var pos = base_pos + i*x_offset + (3-j) * y_offset
@@ -47,6 +48,7 @@ func _process(delta):
 						note_bars += [bar]
 						note_bar_pos += [pos]
 					elif note_array[i][j] == song.NoteType.Pressed:
+						print("pressed")
 						var bar = bar_begin.instance()
 						add_child(bar)
 						var pos = base_pos + i*x_offset + (3-j) * y_offset
@@ -54,6 +56,7 @@ func _process(delta):
 						note_bars += [bar]
 						note_bar_pos += [pos]
 					elif note_array[i][j] == song.NoteType.Held:
+						print("held")
 						var bar = bar_held.instance()
 						add_child(bar)
 						var pos = base_pos + i*x_offset + (3-j) * y_offset
@@ -61,6 +64,7 @@ func _process(delta):
 						note_bars += [bar]
 						note_bar_pos += [pos]
 					elif note_array[i][j] == song.NoteType.Released:
+						print("released")
 						var bar = bar_end.instance()
 						add_child(bar)
 						var pos = base_pos + i*x_offset + (3-j) * y_offset
