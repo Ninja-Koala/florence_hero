@@ -14,182 +14,32 @@ Registered interface Native mobile
    At: scene/resources/scene_format_text.cpp:904:load_interactive() - Condition ' err != OK ' is true. returned: Ref<ResourceInteractiveLoader>()
 **ERROR**: Failed loading resource: res://scenes/note_end.tscn
    At: core/io/resource_loader.cpp:184:_load() - Method/Function Failed, returning: RES()
-single
-single
-single
-single
-single
-single
-single
-single
 missed: missed
 missed: late
-single
-single
-single
-single
 missed: missed
 missed: late
-single
-single
-single
-single
 missed: missed
 missed: late
-single
-single
-single
-single
 missed: missed
 missed: late
-single
-single
-single
-single
 missed: missed
 missed: late
-single
-single
-single
-single
 missed: missed
 missed: late
-single
-single
-single
-single
 missed: missed
 missed: late
-single
-single
-single
-single
 missed: missed
 missed: late
-single
-single
-single
-single
 missed: missed
 missed: late
-single
-single
-single
-single
 missed: missed
 missed: late
-single
-single
-single
-single
 missed: missed
 missed: late
-single
-single
-single
 missed: missed
 missed: late
-single
-single
-single
-single
 missed: missed
 missed: late
-single
-single
-single
-single
-single
-missed: missed
-missed: late
-single
-missed: missed
-missed: late
-single
-single
-single
-single
-single
-single
-single
-missed: missed
-missed: late
-single
-single
-single
-single
-missed: missed
-missed: late
-single
-single
-single
-single
-missed: missed
-missed: late
-single
-single
-single
-single
-missed: missed
-missed: late
-single
-single
-single
-single
-missed: missed
-missed: late
-single
-single
-single
-single
-missed: missed
-missed: late
-single
-single
-single
-single
-missed: missed
-missed: late
-single
-single
-single
-single
-missed: missed
-missed: late
-single
-single
-single
-single
-missed: missed
-missed: late
-single
-single
-single
-single
-missed: missed
-missed: late
-single
-single
-single
-single
-missed: missed
-missed: late
-single
-single
-single
-missed: missed
-missed: late
-single
-single
-single
-single
-missed: missed
-missed: late
-single
-single
-single
-single
-single
 missed: missed
 missed: late
 missed: missed

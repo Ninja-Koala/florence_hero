@@ -40,6 +40,7 @@ func _process(delta):
 		for i in range(4):
 			for j in range(4):
 					if note_array[i][j] == song.NoteType.Single:
+						print("single")
 						var bar = single_bar.instance()
 						add_child(bar)
 						var pos = base_pos + i*x_offset + (3-j) * y_offset
@@ -47,6 +48,7 @@ func _process(delta):
 						note_bars += [bar]
 						note_bar_pos += [pos]
 					elif note_array[i][j] == song.NoteType.Pressed:
+						print("pressed")
 						var bar = bar_begin.instance()
 						add_child(bar)
 						var pos = base_pos + i*x_offset + (3-j) * y_offset
@@ -54,6 +56,7 @@ func _process(delta):
 						note_bars += [bar]
 						note_bar_pos += [pos]
 					elif note_array[i][j] == song.NoteType.Held:
+						print("held")
 						var bar = bar_held.instance()
 						add_child(bar)
 						var pos = base_pos + i*x_offset + (3-j) * y_offset
@@ -61,6 +64,7 @@ func _process(delta):
 						note_bars += [bar]
 						note_bar_pos += [pos]
 					elif note_array[i][j] == song.NoteType.Released:
+						print("released")
 						var bar = bar_end.instance()
 						add_child(bar)
 						var pos = base_pos + i*x_offset + (3-j) * y_offset
