@@ -14,13 +14,13 @@ func add(pitch, sound, note_bars):
 	var button2 = int(note_bars & 4 != 0)
 	var button3 = int(note_bars & 8 != 0)
 	
-	positions.push_back(SongPosition.new(pitch, sound, button0, button1, button2, button3, 0))
+	positions.push_back(SongPosition.new(pitch, sound, button0, button1, button2, button3, 0, null))
 
-func add_note(pitch, sound, button0, button1, button2, button3, color):
-	if sound == -1 && button0 == 0 && button1 == 0 && button2 == 0 && button3 == 0:
+func add_note(pitch, sound, button0, button1, button2, button3, color, stage_direction):
+	if sound == -1 && button0 == 0 && button1 == 0 && button2 == 0 && button3 == 0 && stage_direction == null:
 		positions.push_back(null)
 	else:
-		positions.push_back(SongPosition.new(pitch, sound, button0, button1, button2, button3, color))
+		positions.push_back(SongPosition.new(pitch, sound, button0, button1, button2, button3, color, stage_direction))
 
 func add_pause(count):
 	for i in range(0, count):
@@ -55,8 +55,9 @@ class SongPosition:
 	var sound
 	var buttons = [NoteType.None, NoteType.None, NoteType.None, NoteType.None]
 	var color
+	var stage_direction
 	
-	func _init(pitch, sound, button0, button1, button2, button3, color):
+	func _init(pitch, sound, button0, button1, button2, button3, color, stage_direction):
 		self.pitch = pitch
 		self.sound = sound
 		self.buttons[0] = button0
@@ -64,6 +65,7 @@ class SongPosition:
 		self.buttons[2] = button2
 		self.buttons[3] = button3
 		self.color = color
+		self.stage_direction = stage_direction
 
 enum NoteType {
 	None,

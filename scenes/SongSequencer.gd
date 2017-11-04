@@ -1,5 +1,7 @@
 extends Node
 
+signal stage_direction(name)
+
 onready var class_song = load("res://classes/Song.gd")
 
 var ms_per_tick = 200
@@ -119,6 +121,10 @@ func advance(ms):
 	#is there a note?
 	var found = false
 	if current_note != null:
+		#send stage directions
+		if current_note.stage_direction != null:
+			emit_signal("stage_direction", current_note.stage_direction)
+		
 		#has the user not played the note yet?
 		if punish && current_note.buttons.count(class_song.NoteType.None) < current_note.buttons.size():
 			for press_location in presses_remaining:
