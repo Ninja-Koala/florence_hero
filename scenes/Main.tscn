@@ -92,4 +92,8 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="NotePlayer" parent="." instance=ExtResource( 9 )]
 
+[connection signal="note_played" from="NotePlayer" to="Florence Foster Jennings" method="on_note_played"]
+
+[connection signal="stopped" from="NotePlayer" to="Florence Foster Jennings" method="on_note_stopped"]
+
 
