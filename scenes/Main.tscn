@@ -284,6 +284,8 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Theme", "custom_colors", "custom_fonts" ]
 
+[connection signal="made_mistake" from="SongSequencer" to="Florence Foster Jennings" method="on_mistake"]
+
 [connection signal="note_played" from="NotePlayer" to="Florence Foster Jennings" method="on_note_played"]
 
 [connection signal="stopped" from="NotePlayer" to="Florence Foster Jennings" method="on_note_stopped"]

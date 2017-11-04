@@ -26,6 +26,8 @@ var eye_amplitude = 2
 
 var mouth_closed = false
 
+var error_count = 0
+var error_timeout = 0
 
 func _ready():
 	var rot_origin = Vector2 (470, 570)
@@ -95,6 +97,10 @@ func on_note_stopped ():
 	open_mouth (0)
 
 
+func on_mistake (type):
+	error_count = clamp (error_count + 1, 0, 25)
+
+
 func tilt_face (pos):
 	if pos < 0:
 		pos = clamp (pos * 0.075, -0.075, 0)
@@ -117,6 +123,8 @@ func recalc_face_tilt ():
 
 func recalc_eye_pos ():
 	var pos = eye_pupils_position + eye_amplitude * sin (eye_frequency * eye_move_time)
+	eye_frequency = clamp (error_count / 3, 0, 5)
+	eye_amplitude = clamp (error_count / 5, 0, 1)
 	if eye_frequency > 0.01:
 		eyes_position (true, pos)
 	else:
@@ -165,11 +173,16 @@ func _process (delta):
 		eye_blink_time = 0
 		
 	eye_move_time += delta
+	error_timeout += delta
 
 	if eye_blink_time < 3.9 and not eyes_closed:
 		eyelids.hide ()
 	else:
 		eyelids.show ()
 
+	if error_timeout > 1.0:
+		error_count = clamp (error_count - 1, 0, 25)
+		error_timeout -= 1.0
+		
 	recalc_face_tilt ()
 	recalc_eye_pos ()
