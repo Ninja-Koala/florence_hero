@@ -8,16 +8,18 @@ func read_song(path):
 	var result = class_song.new()
 	
 	while !file.eof_reached():
-		var elements = file.get_csv_line(";")
+		var line = file.get_csv_line(";")
 		
 		#elements must have size 6
-		if elements.size() != 6:
+		if line.size() != 6:
 			break
 		
+		var elements = [line[0], line[1], line[2], line[3], line[4], line[5]]
+		
 		#special characters
-		if elements[0] == " ":
+		if elements[0] == "":
 			elements[0] = 0
-			elements[1] = -2
+			elements[1] = -1
 		elif elements[0] == "x":
 			elements[0] = 0
 			elements[1] = -1
