@@ -19,12 +19,13 @@ _sections_unfolded = [ "Offset", "Transform", "Z" ]
 
 [node name="Wallpaper" type="Sprite" parent="."]
 
+self_modulate = Color( 0.68692, 0.80038, 0.960938, 1 )
 z = -10
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z" ]
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z" ]
 
 [node name="Stage" type="Sprite" parent="."]
 
