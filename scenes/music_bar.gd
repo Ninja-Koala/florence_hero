@@ -30,7 +30,7 @@ func _ready():
 func _process(delta):
 	var changed = song_seq.advance(delta*1000)
 	
-	var note_array = song_seq.get_current_notes(-x_int_offset, 4)
+	var note_array = song_seq.get_current_notes(-x_int_offset, 7)
 	var offset = song_seq.get_current_offset()
 	
 	if changed and changed>=1:
@@ -41,12 +41,12 @@ func _process(delta):
 		note_bars = []
 		note_bar_pos = []
 		
-		for i in range(4):
+		for i in range(note_array.size()):
 			if note_array[i]==null:
 				pass
 			else:
 				var color_index = note_array[i].color
-				for j in range(4):
+				for j in range(note_array[i].buttons.size()):
 						if note_array[i].buttons[j] == song.NoteType.Single:
 							print("single")
 							var bar = single_bar.instance()
