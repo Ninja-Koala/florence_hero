@@ -17,6 +17,8 @@ var base_pos = Vector2(-185,-185)
 var x_offset = Vector2(192,0)
 var y_offset = Vector2(0,102)
 
+var x_int_offset = 2
+
 func _ready():
 	set_process(true)
 
@@ -26,7 +28,7 @@ func _ready():
 func _process(delta):
 	var changed = song_seq.advance(delta*1000)
 	
-	var note_array = song_seq.get_current_notes(-1, 4)
+	var note_array = song_seq.get_current_notes(-x_int_offset, 4)
 	var offset = song_seq.get_current_offset()
 	
 	if changed and changed>=1:
@@ -43,7 +45,7 @@ func _process(delta):
 						print("single")
 						var bar = single_bar.instance()
 						add_child(bar)
-						var pos = base_pos + (i-1)*x_offset + (3-j) * y_offset
+						var pos = base_pos + (i-x_int_offset)*x_offset + (3-j) * y_offset
 						bar.set_position(pos)
 						note_bars += [bar]
 						note_bar_pos += [pos]
@@ -51,7 +53,7 @@ func _process(delta):
 						print("pressed")
 						var bar = bar_begin.instance()
 						add_child(bar)
-						var pos = base_pos + (i-1)*x_offset + (3-j) * y_offset
+						var pos = base_pos + (i-x_int_offset)*x_offset + (3-j) * y_offset
 						bar.set_position(pos)
 						note_bars += [bar]
 						note_bar_pos += [pos]
@@ -59,7 +61,7 @@ func _process(delta):
 						print("held")
 						var bar = bar_held.instance()
 						add_child(bar)
-						var pos = base_pos + (i-1)*x_offset + (3-j) * y_offset
+						var pos = base_pos + (i-x_int_offset)*x_offset + (3-j) * y_offset
 						bar.set_position(pos)
 						note_bars += [bar]
 						note_bar_pos += [pos]
@@ -67,7 +69,7 @@ func _process(delta):
 						print("released")
 						var bar = bar_end.instance()
 						add_child(bar)
-						var pos = base_pos + (i-1)*x_offset + (3-j) * y_offset
+						var pos = base_pos + (i-x_int_offset)*x_offset + (3-j) * y_offset
 						bar.set_position(pos)
 						note_bars += [bar]
 						note_bar_pos += [pos]
