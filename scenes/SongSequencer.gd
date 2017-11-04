@@ -2,6 +2,7 @@ extends Node
 
 signal stage_direction(name)
 signal score_points(points)
+signal made_mistake(type)
 
 const NOTE_PRESS_POINTS = 10
 const NOTE_HOLD_POINTS = 5
@@ -23,6 +24,7 @@ var current_buttons = [ButtonState.None,  ButtonState.None, ButtonState.None, Bu
 
 var presses_remaining = [[]]
 var releases_remaining = [[]]
+var holds_remaining = [[]]
 var queue_position_ticks = 0
 
 var current_sounds = [false, false, false, false]
@@ -176,10 +178,12 @@ func add_mistake(type, entries):
 		#play random note
 		if punish:
 			player.play(randi()%10, randi()%2)
+		emit_signal("made_mistake", type)
 	elif type == MistakeType.NoteMissed:
 		print("mistake: missed")
 		if punish:
 			player.stop()
+		emit_signal("made_mistake", type)
 	elif type == MistakeType.ReleasedTooEarly:
 		print("mistake: early")
 	elif type == MistakeType.ReleasedTooLate:
