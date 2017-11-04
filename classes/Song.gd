@@ -46,7 +46,7 @@ func get_notes_in_range(index, count):
 		if position != null:
 			result.push_back(position)
 		else:
-			result.push_back(SongPosition.new(0, -1, NoteType.None, NoteType.None, NoteType.None, NoteType.None, 0))
+			result.push_back(null)
 		
 	return result
 
