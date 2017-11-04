@@ -1,7 +1,7 @@
 extends Node
 
 signal stage_direction(name)
-signal score_points(points)
+signal score_points(points) 
 
 const NOTE_PRESS_POINTS = 10
 const NOTE_HOLD_POINTS = 5
