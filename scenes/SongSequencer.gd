@@ -1,8 +1,8 @@
 extends Node
 
-onready var SongClass = load("res://classes/Song.gd")
+onready var class_song = load("res://classes/Song.gd")
 
-var ms_per_tick = 200
+var ms_per_tick = 100
 var before_tolerance_ms = 100
 var after_tolerance_ms = 100
 
@@ -20,7 +20,7 @@ func initialize(player, song):
 	self.player = player
 	self.song = song
 
-func set_button_state(var button, var new_state):
+func set_button_state(button, new_state):
 	if new_state:
 		current_buttons[button] = ButtonState.Pressed
 		
@@ -90,7 +90,7 @@ func advance(ms):
 	
 	return tick - tick_before
 
-func get_current_notes(var count):
+func get_current_notes(count):
 	return song.get_notes_in_range(current_tick(), count)
 
 func get_current_offset():
@@ -99,10 +99,10 @@ func get_current_offset():
 func current_tick():
 	return calculate_tick(current_ms)
 	
-func calculate_tick(var ms):
+func calculate_tick(ms):
 	return ms / ms_per_tick
 
-func add_mistake(var type):
+func add_mistake(type):
 	if type == MistakeType.UnnecessaryPress:
 		print("missed: unnecessary")
 	elif type == MistakeType.NoteMissed:
@@ -112,7 +112,7 @@ func add_mistake(var type):
 	elif type == MistakeType.ReleasedTooLate:
 		print("missed: late")
 
-func update_queue(var tick_tolerance_low, var tick_tolerance_high):
+func update_queue(tick_tolerance_low, tick_tolerance_high):
 	#has the lower tolerance bound shifted?
 	if queue_position_ticks < tick_tolerance_low:
 		#are there any presses left?
@@ -144,12 +144,12 @@ func update_queue(var tick_tolerance_low, var tick_tolerance_high):
 			presses_remaining.push_back([])
 			releases_remaining.push_back([])
 			for button in range(0, 4):
-				if new_positions[i][button] == SongClass.NoteType.Single:
+				if new_positions[i][button] == class_song.NoteType.Single:
 					presses_remaining.back().push_back(button)
 					releases_remaining.back().push_back(button)
-				elif new_positions[i][button] == SongClass.NoteType.Pressed:
+				elif new_positions[i][button] == class_song.NoteType.Pressed:
 					presses_remaining.back().push_back(button)
-				elif new_positions[i][button] == SongClass.NoteType.Released:
+				elif new_positions[i][button] == class_song.NoteType.Released:
 					releases_remaining.back().push_back(button)
 
 enum ButtonState {

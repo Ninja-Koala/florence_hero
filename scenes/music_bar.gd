@@ -2,6 +2,7 @@ extends Node2D
 
 onready var song_seq = $SongSequencer
 onready var note_player = $NotePlayer
+onready var class_song_reader = load("res://classes/SongReader.gd")
 onready var demo_song_resource = load("res://songs/DemoSong.gd")
 onready var song = load("res://classes/Song.gd")
 onready var note_bar = load("res://scenes/note.tscn")
@@ -15,7 +16,9 @@ var y_offset = Vector2(0,102)
 
 func _ready():
 	set_process(true)
-	song_seq.initialize(note_player, demo_song_resource.new())
+
+	var song_reader = class_song_reader.new()
+	song_seq.initialize(note_player, song_reader.read_song("res://songs/DemoSong1.csv"))
 
 func _process(delta):
 	var changed = song_seq.advance(delta*1000)

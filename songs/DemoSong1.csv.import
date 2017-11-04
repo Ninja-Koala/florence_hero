@@ -1,0 +1,10 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+valid=false
+
+[params]
+
+compress=true
+delimiter=1
