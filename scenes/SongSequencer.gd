@@ -27,34 +27,47 @@ func set_button_state(button, new_state):
 		#was the button press necessary?
 		var found = false
 		for i in range(0, presses_remaining.size()):
-			if presses_remaining[i].has(button):
+			if get_button_in_array(presses_remaining[i], button) != null:
 				#remove the necessity to press the button
-				presses_remaining[i].erase(button)
+				erase_button_from_array(presses_remaining[i], button)
 				found = true
 				break
-			elif releases_remaining[i].has(button):
+			elif get_button_in_array(releases_remaining[i], button) != null:
 				#wrong operation order!
 				break
 		if !found:
 			#unnecessary button press
-			add_mistake(MistakeType.UnnecessaryPress)
+			add_mistake(MistakeType.UnnecessaryPress, null)
 	else:
 		current_buttons[button] = ButtonState.Released
 	
 		#was the button release necessary?
 		var found = false
 		for i in range(0, releases_remaining.size()):
-			if releases_remaining[i].has(button):
+			if get_button_in_array(releases_remaining[i], button) != null:
 				#remove the necessity to press the button
-				releases_remaining[i].erase(button)
+				erase_button_from_array(releases_remaining[i], button)
 				found = true
 				break
-			elif presses_remaining[i].has(button):
+			elif get_button_in_array(presses_remaining[i], button) != null:
 				#wrong operation order!
 				break
 		if !found:
 			#unnecessary button release
-			add_mistake(MistakeType.ReleasedTooEarly)
+			add_mistake(MistakeType.ReleasedTooEarly, null)
+
+func get_button_in_array(array, button):
+	for entry in array:
+		if entry.button == button:
+			return entry
+	
+	return false
+
+func erase_button_from_array(array, button):
+	for entry in array:
+		if entry.button == button:
+			array.erase(entry)
+			return
 
 func advance(ms):
 	#calculate position before and after the advancement
@@ -78,8 +91,31 @@ func advance(ms):
 		player.stop()
 		return
 	
+	#get note to play
+	var current_note = song.get_entry_at(tick)
+	
+	if tick == 28:
+		pass
+	
+	#is there a note?
+	var found = false
+	if current_note != null:
+		#has the user not played the note yet?
+		for press_location in presses_remaining:
+			for entry in press_location:
+				var etick = entry.tick
+				if entry.tick == tick:
+					entry.not_played = true
+					found = true
+		
+		#play the note
+		if !found:
+			if current_note.sound == -1:
+				player.stop()
+				player.play(current_note.pitch, current_note.sound)
+	
 	#play the tick
-	song.play_notes_at(player, tick)
+	#song.play_notes_at(player, tick)
 	
 	#normalize button states
 	for i in range(0, 4):
@@ -90,8 +126,8 @@ func advance(ms):
 	
 	return tick - tick_before
 
-func get_current_notes(count):
-	return song.get_notes_in_range(current_tick(), count)
+func get_current_notes(offset, count):
+	return song.get_notes_in_range(current_tick() + offset, count)
 
 func get_current_offset():
 	return (current_ms % ms_per_tick) / float(ms_per_tick)
@@ -102,15 +138,20 @@ func current_tick():
 func calculate_tick(ms):
 	return ms / ms_per_tick
 
-func add_mistake(type):
+func add_mistake(type, entries):
 	if type == MistakeType.UnnecessaryPress:
-		print("missed: unnecessary")
+		print("mistake: unnecessary")
+		#play random note
+		player.play(randi()%10, randi()%2)
 	elif type == MistakeType.NoteMissed:
-		print("missed: missed")
+		print("mistake: missed")
+		#player.stop()
 	elif type == MistakeType.ReleasedTooEarly:
-		print("missed: early")
+		print("mistake: early")
 	elif type == MistakeType.ReleasedTooLate:
-		print("missed: late")
+		print("mistake: late")
+		#play random note
+		#player.play(randi()%10, randi()%2)
 
 func update_queue(tick_tolerance_low, tick_tolerance_high):
 	#has the lower tolerance bound shifted?
@@ -119,7 +160,7 @@ func update_queue(tick_tolerance_low, tick_tolerance_high):
 		for i in range(0, tick_tolerance_low - queue_position_ticks):
 			if presses_remaining[0].size() > 0:
 				#add one mistake for the missed notes
-				add_mistake(MistakeType.NoteMissed)
+				add_mistake(MistakeType.NoteMissed, presses_remaining[0])
 				
 			#shift the presses
 			presses_remaining.remove(0)
@@ -128,7 +169,7 @@ func update_queue(tick_tolerance_low, tick_tolerance_high):
 		for i in range(0, tick_tolerance_low - queue_position_ticks):
 			if releases_remaining[0].size() > 0:
 				#add one mistake for the missed releases
-				add_mistake(MistakeType.ReleasedTooLate)
+				add_mistake(MistakeType.ReleasedTooLate, releases_remaining[0])
 				
 			#shift the releases
 			releases_remaining.remove(0)
@@ -138,19 +179,36 @@ func update_queue(tick_tolerance_low, tick_tolerance_high):
 	
 	#has the upper tolerance bound shifted?
 	var diff = tick_tolerance_high - queue_position_ticks - presses_remaining.size() + 1
+	var start = tick_tolerance_high - diff + 1
 	if diff > 0:
-		var new_positions = song.get_notes_in_range(tick_tolerance_high, diff)
+		var new_positions = song.get_notes_in_range(start, diff)
 		for i in range(0, diff):
 			presses_remaining.push_back([])
 			releases_remaining.push_back([])
 			for button in range(0, 4):
-				if new_positions[i][button] == class_song.NoteType.Single:
-					presses_remaining.back().push_back(button)
-					releases_remaining.back().push_back(button)
-				elif new_positions[i][button] == class_song.NoteType.Pressed:
-					presses_remaining.back().push_back(button)
-				elif new_positions[i][button] == class_song.NoteType.Released:
-					releases_remaining.back().push_back(button)
+				if new_positions[i][0][button] == class_song.NoteType.Single:
+					presses_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Press, button, start + i))
+					releases_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Release, button, start + i))
+				elif new_positions[i][0][button] == class_song.NoteType.Pressed:
+					presses_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Press, button, start + i))
+				elif new_positions[i][0][button] == class_song.NoteType.Released:
+					releases_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Release, button, start + i))
+
+class ButtonEntry:
+	var type
+	var button
+	var tick
+	var not_played
+	
+	func _init(type, button, tick):
+		self.type = type
+		self.button = button
+		self.tick = tick
+
+enum ButtonEntryType {
+	Press,
+	Release
+}
 
 enum ButtonState {
 	None,

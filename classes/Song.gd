@@ -14,13 +14,13 @@ func add(pitch, sound, note_bars):
 	var button2 = int(note_bars & 4 != 0)
 	var button3 = int(note_bars & 8 != 0)
 	
-	positions.push_back(SongPosition.new(pitch, sound, button0, button1, button2, button3))
+	positions.push_back(SongPosition.new(pitch, sound, button0, button1, button2, button3, 0))
 
-func add_note(pitch, sound, button0, button1, button2, button3):
+func add_note(pitch, sound, button0, button1, button2, button3, color):
 	if sound == -1 && button0 == 0 && button1 == 0 && button2 == 0 && button3 == 0:
 		positions.push_back(null)
 	else:
-		positions.push_back(SongPosition.new(pitch, sound, button0, button1, button2, button3))
+		positions.push_back(SongPosition.new(pitch, sound, button0, button1, button2, button3, color))
 
 func add_pause(count):
 	for i in range(0, count):
@@ -33,6 +33,9 @@ func play_notes_at(player, index):
 	player.stop()
 	player.play(position.pitch, position.sound)
 
+func get_entry_at(index):
+	return positions[index]
+
 func get_notes_in_range(index, count):
 	var result = []
 	for i in range(0, count):
@@ -41,9 +44,9 @@ func get_notes_in_range(index, count):
 			 position = positions[index + i]
 			
 		if position != null:
-			result.push_back(position.buttons)
+			result.push_back([position.buttons, position.color])
 		else:
-			result.push_back([NoteType.None, NoteType.None, NoteType.None, NoteType.None])
+			result.push_back([[NoteType.None, NoteType.None, NoteType.None, NoteType.None], 0])
 		
 	return result
 
@@ -51,14 +54,16 @@ class SongPosition:
 	var pitch
 	var sound
 	var buttons = [NoteType.None, NoteType.None, NoteType.None, NoteType.None]
+	var color
 	
-	func _init(pitch, sound, button0, button1, button2, button3):
+	func _init(pitch, sound, button0, button1, button2, button3, color):
 		self.pitch = pitch
 		self.sound = sound
 		self.buttons[0] = button0
 		self.buttons[1] = button1
 		self.buttons[2] = button2
 		self.buttons[3] = button3
+		self.color = color
 
 enum NoteType {
 	None,

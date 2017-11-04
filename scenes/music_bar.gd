@@ -26,7 +26,7 @@ func _ready():
 func _process(delta):
 	var changed = song_seq.advance(delta*1000)
 	
-	var note_array = song_seq.get_current_notes(4)
+	var note_array = song_seq.get_current_notes(0, 4)
 	var offset = song_seq.get_current_offset()
 	
 	if changed and changed>=1:
@@ -73,3 +73,18 @@ func _process(delta):
 						note_bar_pos += [pos]
 	for i in range(note_bars.size()):
 		note_bars[i].set_position(note_bar_pos[i] - x_offset * (offset-1))
+
+func _input(event):
+	for i in range(0, 4):
+		if event.is_action_pressed("play_tone" + str(i)):
+			song_seq.set_button_state(i, true)
+	for i in range(0, 2):
+		if event.is_action_pressed("play_sound" + str(i)):
+			pass
+			
+	for i in range(0, 4):
+		if event.is_action_released("play_tone" + str(i)):
+			song_seq.set_button_state(i, false)
+	for i in range(0, 2):
+		if event.is_action_released("play_sound" + str(i)):
+			pass
