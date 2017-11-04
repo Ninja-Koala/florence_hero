@@ -12,12 +12,12 @@
 [ext_resource path="res://sprites/ffj/ffj-08-baeckchen-465-409.png" type="Texture" id=10]
 [ext_resource path="res://sprites/ffj/ffj-09-unterlippe-bg-545-451.png" type="Texture" id=11]
 [ext_resource path="res://sprites/ffj/ffj-10-unterlippe-540-450.png" type="Texture" id=12]
-[ext_resource path="res://sprites/ffj/ffj-11-oberlippe-bg-543-431.png" type="Texture" id=13]
-[ext_resource path="res://sprites/ffj/ffj-12-zaehne-399-386.png" type="Texture" id=14]
-[ext_resource path="res://sprites/ffj/ffj-13-oberlippe-534-429.png" type="Texture" id=15]
-[ext_resource path="res://sprites/ffj/ffj-14-nase-536-380.png" type="Texture" id=16]
+[ext_resource path="res://sprites/ffj/ffj-14-nase-536-380.png" type="Texture" id=13]
+[ext_resource path="res://sprites/ffj/ffj-11-oberlippe-bg-543-431.png" type="Texture" id=14]
+[ext_resource path="res://sprites/ffj/ffj-12-zaehne-399-386.png" type="Texture" id=15]
+[ext_resource path="res://sprites/ffj/ffj-13-oberlippe-534-429.png" type="Texture" id=16]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 
 resource_name = "Aaaah"
 length = 5.3
@@ -46,9 +46,8 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -2.70184, -8.10541 ), Vector2( -2.70184, -8.10541 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
-resource_name = "Blinzeln"
 length = 3.5
 loop = true
 step = 0.1
@@ -130,7 +129,7 @@ visible = false
 texture = ExtResource( 10 )
 centered = false
 offset = Vector2( 465, 409 )
-_sections_unfolded = [ "Offset" ]
+_sections_unfolded = [ "Material", "Offset", "Visibility", "Z" ]
 
 [node name="Unterlippe-Hintergrund" type="Sprite" parent="."]
 
@@ -147,16 +146,24 @@ centered = false
 offset = Vector2( 540, 450 )
 _sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
+[node name="Nase" type="Sprite" parent="."]
+
+visible = false
+texture = ExtResource( 13 )
+centered = false
+offset = Vector2( 536, 380 )
+_sections_unfolded = [ "Material", "Offset", "Visibility" ]
+
 [node name="Oberlippe-Hintergrund" type="Sprite" parent="."]
 
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 centered = false
 offset = Vector2( 543, 431 )
 _sections_unfolded = [ "Offset" ]
 
 [node name="Zähne" type="Sprite" parent="."]
 
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 centered = false
 offset = Vector2( 399, 386 )
 _sections_unfolded = [ "Offset" ]
@@ -164,25 +171,18 @@ _sections_unfolded = [ "Offset" ]
 [node name="Oberlippe" type="Sprite" parent="."]
 
 position = Vector2( -2.70184, -8.10541 )
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 centered = false
 offset = Vector2( 534, 429 )
 _sections_unfolded = [ "Offset", "Transform" ]
-
-[node name="Nase" type="Sprite" parent="."]
-
-texture = ExtResource( 16 )
-centered = false
-offset = Vector2( 536, 380 )
-_sections_unfolded = [ "Material", "Offset", "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/Aaaah = SubResource( 2 )
-anims/Blinzeln = SubResource( 1 )
+anims/Aaaah = SubResource( 1 )
+anims/Blinzeln = SubResource( 2 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
