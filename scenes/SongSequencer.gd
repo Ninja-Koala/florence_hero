@@ -32,6 +32,9 @@ func advance(ms):
 	#play the tick
 	song.play_notes_at(player, tick)
 
+func get_current_noted(var count):
+	return song.get_notes_in_range(current_tick(), count)
+
 func current_tick():
 	return current_ms / ms_per_tick
 

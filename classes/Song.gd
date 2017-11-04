@@ -25,7 +25,10 @@ func play_notes_at(player, index):
 func get_notes_in_range(index, count):
 	var result = []
 	for i in range(0, count):
-		var position = positions[index + i]
+		var position
+		if i < positions.size():
+			 position = positions[index + i]
+		
 		var notes = [NoteType.None, NoteType.None, NoteType.None, NoteType.None]
 			
 		if position != null:
