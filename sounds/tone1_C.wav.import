@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tone1_C.wav-2957170928344b4d7b74b70132a16574.sample"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0
