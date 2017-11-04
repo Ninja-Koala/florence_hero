@@ -1,69 +1,117 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://sprites/ffj/ffj-00-portrait-0-0.png" type="Texture" id=1]
-[ext_resource path="res://sprites/ffj/ffj-01-pupillen-bg-420-290.png" type="Texture" id=2]
-[ext_resource path="res://sprites/ffj/ffj-02-pupillen-488-344.png" type="Texture" id=3]
-[ext_resource path="res://sprites/ffj/ffj-03-pupillenshading-431-300.png" type="Texture" id=4]
-[ext_resource path="res://sprites/ffj/ffj-04-augenmaske-157-64.png" type="Texture" id=5]
-[ext_resource path="res://sprites/ffj/ffj-05-rechtes-auge-458-336.png" type="Texture" id=6]
-[ext_resource path="res://sprites/ffj/ffj-06-linkes-auge-548-318.png" type="Texture" id=7]
-[ext_resource path="res://sprites/ffj/ffj-07-augenlider-457-317.png" type="Texture" id=8]
-[ext_resource path="res://sprites/ffj/ffj-08-baeckchen-465-409.png" type="Texture" id=9]
-[ext_resource path="res://sprites/ffj/ffj-09-unterlippe-bg-545-451.png" type="Texture" id=10]
-[ext_resource path="res://sprites/ffj/ffj-10-unterlippe-540-450.png" type="Texture" id=11]
-[ext_resource path="res://sprites/ffj/ffj-11-oberlippe-bg-543-431.png" type="Texture" id=12]
-[ext_resource path="res://sprites/ffj/ffj-12-zaehne-399-386.png" type="Texture" id=13]
-[ext_resource path="res://sprites/ffj/ffj-13-oberlippe-534-429.png" type="Texture" id=14]
-[ext_resource path="res://sprites/ffj/ffj-14-nase-536-380.png" type="Texture" id=15]
+[ext_resource path="res://scenes/Florence Foster Jennings.gd" type="Script" id=1]
+[ext_resource path="res://sprites/ffj/ffj-00-portrait-0-0.png" type="Texture" id=2]
+[ext_resource path="res://sprites/ffj/ffj-01-pupillen-bg-420-290.png" type="Texture" id=3]
+[ext_resource path="res://sprites/ffj/ffj-02-pupillen-488-344.png" type="Texture" id=4]
+[ext_resource path="res://sprites/ffj/ffj-03-pupillenshading-431-300.png" type="Texture" id=5]
+[ext_resource path="res://sprites/ffj/ffj-04-augenmaske-157-64.png" type="Texture" id=6]
+[ext_resource path="res://sprites/ffj/ffj-05-rechtes-auge-458-336.png" type="Texture" id=7]
+[ext_resource path="res://sprites/ffj/ffj-06-linkes-auge-548-318.png" type="Texture" id=8]
+[ext_resource path="res://sprites/ffj/ffj-07-augenlider-457-317.png" type="Texture" id=9]
+[ext_resource path="res://sprites/ffj/ffj-08-baeckchen-465-409.png" type="Texture" id=10]
+[ext_resource path="res://sprites/ffj/ffj-09-unterlippe-bg-545-451.png" type="Texture" id=11]
+[ext_resource path="res://sprites/ffj/ffj-10-unterlippe-540-450.png" type="Texture" id=12]
+[ext_resource path="res://sprites/ffj/ffj-11-oberlippe-bg-543-431.png" type="Texture" id=13]
+[ext_resource path="res://sprites/ffj/ffj-12-zaehne-399-386.png" type="Texture" id=14]
+[ext_resource path="res://sprites/ffj/ffj-13-oberlippe-534-429.png" type="Texture" id=15]
+[ext_resource path="res://sprites/ffj/ffj-14-nase-536-380.png" type="Texture" id=16]
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "Aaaah"
+length = 5.3
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Unterlippe:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 3.2, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5.40363, 26.4776 ), Vector2( 5.40363, 26.4776 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Oberlippe:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0999999, 3.3, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -2.70184, -8.10541 ), Vector2( -2.70184, -8.10541 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "Blinzeln"
+length = 3.5
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Augenlider:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Florence Foster Jennings" type="Node2D"]
 
+script = ExtResource( 1 )
+
 [node name="Florence-Portrait" type="Sprite" parent="."]
 
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Offset" ]
 
 [node name="Pupillen-Hintergrund" type="Sprite" parent="."]
 
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 centered = false
 offset = Vector2( 420, 290 )
 _sections_unfolded = [ "Offset" ]
 
 [node name="Pupillen" type="Sprite" parent="."]
 
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 centered = false
 offset = Vector2( 488, 344 )
 _sections_unfolded = [ "Offset" ]
 
 [node name="Pupillen-Shading" type="Sprite" parent="."]
 
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 centered = false
 offset = Vector2( 431, 300 )
 _sections_unfolded = [ "Offset" ]
 
 [node name="Augenmaske" type="Sprite" parent="."]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 centered = false
 offset = Vector2( 157, 64 )
 _sections_unfolded = [ "Offset" ]
 
 [node name="rechtes Auge" type="Sprite" parent="."]
 
-visible = false
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 centered = false
 offset = Vector2( 458, 336 )
 _sections_unfolded = [ "Offset" ]
 
 [node name="linkes Auge" type="Sprite" parent="."]
 
-visible = false
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 centered = false
 offset = Vector2( 548, 318 )
 _sections_unfolded = [ "Offset" ]
@@ -71,59 +119,90 @@ _sections_unfolded = [ "Offset" ]
 [node name="Augenlider" type="Sprite" parent="."]
 
 visible = false
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 centered = false
 offset = Vector2( 457, 317 )
-_sections_unfolded = [ "Offset" ]
+_sections_unfolded = [ "Offset", "Visibility" ]
 
 [node name="Bäckchen" type="Sprite" parent="."]
 
 visible = false
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 centered = false
 offset = Vector2( 465, 409 )
 _sections_unfolded = [ "Offset" ]
 
 [node name="Unterlippe-Hintergrund" type="Sprite" parent="."]
 
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 centered = false
 offset = Vector2( 545, 451 )
 _sections_unfolded = [ "Offset" ]
 
 [node name="Unterlippe" type="Sprite" parent="."]
 
-texture = ExtResource( 11 )
+position = Vector2( 5.40363, 26.4776 )
+texture = ExtResource( 12 )
 centered = false
 offset = Vector2( 540, 450 )
-_sections_unfolded = [ "Offset" ]
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
 [node name="Oberlippe-Hintergrund" type="Sprite" parent="."]
 
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 centered = false
 offset = Vector2( 543, 431 )
 _sections_unfolded = [ "Offset" ]
 
 [node name="Zähne" type="Sprite" parent="."]
 
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 centered = false
 offset = Vector2( 399, 386 )
 _sections_unfolded = [ "Offset" ]
 
 [node name="Oberlippe" type="Sprite" parent="."]
 
-texture = ExtResource( 14 )
+position = Vector2( -2.70184, -8.10541 )
+texture = ExtResource( 15 )
 centered = false
 offset = Vector2( 534, 429 )
-_sections_unfolded = [ "Offset" ]
+_sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="Nase" type="Sprite" parent="."]
 
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 centered = false
 offset = Vector2( 536, 380 )
 _sections_unfolded = [ "Material", "Offset", "Visibility" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/Aaaah = SubResource( 2 )
+anims/Blinzeln = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "Aaaah"
+_sections_unfolded = [ "Playback Options", "playback" ]
+
+[node name="AnimationTreePlayer" type="AnimationTreePlayer" parent="."]
+
+playback_process_mode = 1
+base_path = NodePath("..")
+master_player = NodePath("")
+data = {
+"active": false,
+"connections": [  ],
+"master": NodePath(""),
+"nodes": [ {
+"id": "out",
+"position": Vector2( 40, 40 ),
+"type": "output"
+} ]
+}
 
 
