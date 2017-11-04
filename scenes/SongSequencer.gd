@@ -138,9 +138,6 @@ func advance(ms):
 					if entry.tick == tick:
 						entry.not_played = true
 						found = true
-						
-						#calculate points
-						if entry.button
 			
 		#was a button press or a single note needed here?
 		if found && (current_note.buttons.count(class_song.NoteType.Single) != 0 || current_note.buttons.count(class_song.NoteType.Pressed) != 0):
