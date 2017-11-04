@@ -18,9 +18,14 @@ var presses_remaining = [[]]
 var releases_remaining = [[]]
 var queue_position_ticks = 0
 
+var current_sounds = [false, false, false, false]
+
 func initialize(player, song):
 	self.player = player
 	self.song = song
+
+func set_sound_state(sound, new_state):
+	current_sounds[sound] = new_state
 
 func set_button_state(button, new_state):
 	if new_state:
@@ -75,7 +80,7 @@ func set_button_state(button, new_state):
 
 func get_button_in_array(array, button):
 	for entry in array:
-		if entry.button == button:
+		if entry.button == button && entry.sound == current_sounds.find_last(true):
 			return entry
 	
 	return null
@@ -209,22 +214,24 @@ func update_queue(tick_tolerance_low, tick_tolerance_high):
 			if new_positions[i] != null:
 				for button in range(0, 4):
 					if new_positions[i].buttons[button] == class_song.NoteType.Single:
-						presses_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Press, button, start + i))
-						releases_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Release, button, start + i))
+						presses_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Press, button, new_positions[i].sound, start + i))
+						releases_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Release, button, new_positions[i].sound, start + i))
 					elif new_positions[i].buttons[button] == class_song.NoteType.Pressed:
-						presses_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Press, button, start + i))
+						presses_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Press, button, new_positions[i].sound, start + i))
 					elif new_positions[i].buttons[button] == class_song.NoteType.Released:
-						releases_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Release, button, start + i))
+						releases_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Release, button, new_positions[i].sound, start + i))
 
 class ButtonEntry:
 	var type
 	var button
 	var tick
+	var sound
 	var not_played
 	
-	func _init(type, button, tick):
+	func _init(type, button, sound, tick):
 		self.type = type
 		self.button = button
+		self.sound = sound
 		self.tick = tick
 
 enum ButtonEntryType {

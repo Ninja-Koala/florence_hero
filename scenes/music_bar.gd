@@ -92,6 +92,7 @@ func _input(event):
 			song_seq.set_button_state(i, true)
 	for i in range(0, 2):
 		if event.is_action_pressed("play_sound" + str(i)):
+			song_seq.set_sound_state(i, true)
 			pass
 			
 	for i in range(0, 4):
@@ -99,4 +100,5 @@ func _input(event):
 			song_seq.set_button_state(i, false)
 	for i in range(0, 2):
 		if event.is_action_released("play_sound" + str(i)):
+			song_seq.set_sound_state(i, false)
 			pass
