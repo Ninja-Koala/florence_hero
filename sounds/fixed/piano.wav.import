@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/hi.wav-89352171fb29d520b3dcb604a5421f48.sample"
+path="res://.import/piano.wav-a51e668c1779725f8130942667ddc3cf.sample"
 
 [params]
 
 force/8_bit=false
-force/mono=true
+force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
