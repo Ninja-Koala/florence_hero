@@ -1,7 +1,9 @@
 extends Node2D
 
-onready var song_seq = $SongSequencer
-onready var note_player = $NotePlayer
+onready var main = get_node("Main")
+
+onready var song_seq = get_node("/root/Mainroot/SongSequencer")
+onready var note_player = get_node("/root/Mainroot/NotePlayer")
 onready var class_song_reader = load("res://classes/SongReader.gd")
 onready var demo_song_resource = load("res://songs/DemoSong.gd")
 onready var song = load("res://classes/Song.gd")
