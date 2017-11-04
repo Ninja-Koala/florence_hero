@@ -50,7 +50,7 @@ _sections_unfolded = [ "Material", "Offset" ]
 use_parent_material = true
 texture = ExtResource( 5 )
 centered = false
-offset = Vector2( 488, 344 )
+offset = Vector2( 482, 344 )
 _sections_unfolded = [ "Material", "Offset" ]
 
 [node name="Pupillen-Shading" type="Sprite" parent="Gesicht"]
@@ -74,8 +74,8 @@ _sections_unfolded = [ "Material", "Offset" ]
 use_parent_material = true
 texture = ExtResource( 8 )
 centered = false
-offset = Vector2( 458, 336 )
-_sections_unfolded = [ "Material", "Offset" ]
+offset = Vector2( 458, 337 )
+_sections_unfolded = [ "Material", "Offset", "Transform" ]
 
 [node name="linkes Auge" type="Sprite" parent="Gesicht"]
 
