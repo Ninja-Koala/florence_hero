@@ -26,6 +26,7 @@ var presses_remaining = [[]]
 var releases_remaining = [[]]
 var holds_remaining = [[]]
 var queue_position_ticks = 0
+var finished = false
 
 var current_sounds = [false, false, false, false]
 
@@ -102,6 +103,10 @@ func erase_button_from_array(array, button):
 			return
 
 func advance(ms):
+	#song finished?
+	if finished:
+		return 0
+	
 	#calculate position before and after the advancement
 	var tick_before = current_tick()
 	current_ms += int(ms)
@@ -121,6 +126,7 @@ func advance(ms):
 	#is the song finished?
 	if tick >= song.get_length():
 		player.stop()
+		finished = true
 		return
 	
 	#get note to play
