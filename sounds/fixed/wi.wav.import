@@ -7,7 +7,7 @@ path="res://.import/wi.wav-a03b48d363c835a38a0a824ceaeae96b.sample"
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true

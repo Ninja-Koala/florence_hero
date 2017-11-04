@@ -7,7 +7,7 @@ path="res://.import/da.wav-1d45507c1b57e62b88f9bbb1bb21de4a.sample"
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
