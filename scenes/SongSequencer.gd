@@ -1,6 +1,11 @@
 extends Node
 
 signal stage_direction(name)
+signal score_points(points)
+
+const NOTE_PRESS_POINTS = 10
+const NOTE_HOLD_POINTS = 5
+const NOTE_RELEASE_POINTS = 2
 
 onready var class_song = load("res://classes/Song.gd")
 
@@ -52,6 +57,7 @@ func set_button_state(button, new_state):
 				#remove the necessity to press the button
 				erase_button_from_array(presses_remaining[i], button)
 				found = true
+				emit_signal("score_points", NOTE_PRESS_POINTS)
 				break
 			elif get_button_in_array(releases_remaining[i], button) != null:
 				#wrong operation order!
@@ -129,10 +135,12 @@ func advance(ms):
 		if punish && current_note.buttons.count(class_song.NoteType.None) < current_note.buttons.size():
 			for press_location in presses_remaining:
 				for entry in press_location:
-					var etick = entry.tick
 					if entry.tick == tick:
 						entry.not_played = true
 						found = true
+						
+						#calculate points
+						if entry.button
 			
 		#was a button press or a single note needed here?
 		if found && (current_note.buttons.count(class_song.NoteType.Single) != 0 || current_note.buttons.count(class_song.NoteType.Pressed) != 0):
@@ -226,6 +234,8 @@ func update_queue(tick_tolerance_low, tick_tolerance_high):
 						presses_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Press, button, new_positions[i].sound, start + i))
 					elif new_positions[i].buttons[button] == class_song.NoteType.Released:
 						releases_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Release, button, new_positions[i].sound, start + i))
+					#elif new_positions[i].buttons[button] == class_song.NoteType.Held:
+					#	presses_remaining
 
 class ButtonEntry:
 	var type

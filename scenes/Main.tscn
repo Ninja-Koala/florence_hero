@@ -19,7 +19,6 @@ _sections_unfolded = [ "Offset", "Transform", "Z" ]
 
 [node name="Wallpaper" type="Sprite" parent="."]
 
-self_modulate = Color( 0.68692, 0.80038, 0.960938, 1 )
 z = -10
 texture = ExtResource( 2 )
 centered = false

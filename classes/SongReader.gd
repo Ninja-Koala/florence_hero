@@ -26,6 +26,10 @@ func read_song(path):
 			elements[0] = 0
 			elements[1] = -1
 		
+		#empty stage directions
+		if elements[7] == "":
+			elements[7] = null
+		
 		result.add_note(int(elements[0]), int(elements[1]), int(elements[2]), int(elements[3]), int(elements[4]), int(elements[5]), int(elements[6]), elements[7])
 		
 	file.close()
