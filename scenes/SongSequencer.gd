@@ -35,20 +35,43 @@ func initialize(player, song):
 	self.song = song
 
 func set_sound_state(sound, new_state):
+	var sound_before = current_sounds.find_last(true)
 	current_sounds[sound] = new_state
+	var sound_after = current_sounds.find_last(true)
+	
+	#get current button
+	var button = -1
+	for i in range(current_buttons.size()):
+		if current_buttons[i] == ButtonState.Pressed || current_buttons[i] == ButtonState.Held:
+			button = i
+			break
+	
+	if button != -1:
+		if sound_before != sound_after:
+			if sound_before != -1:
+				handle_note_release_action(button, sound_before)
+			if sound_after != -1:
+				handle_note_press_action(button, sound_after)
 
 func set_button_state(button, new_state):
+	var sound = current_sounds.find_last(true)
+	
 	if new_state:
-		handle_note_press_action(button, current_sounds.find_last(true))
+		if current_buttons[button] == ButtonState.Pressed || current_buttons[button] == ButtonState.Held:
+			return
+			
+		current_buttons[button] = ButtonState.Pressed
+		if sound != -1:
+			handle_note_press_action(button, sound)
 	else:
-		handle_note_release_action(button, current_sounds.find_last(true))
+		if current_buttons[button] == ButtonState.Released || current_buttons[button] == ButtonState.None:
+			return
+			
+		current_buttons[button] = ButtonState.Released
+		if sound != -1:
+			handle_note_release_action(button, sound)
 
 func handle_note_press_action(button, sound):
-	if current_buttons[button] == ButtonState.Pressed || current_buttons[button] == ButtonState.Held:
-		return
-		
-	current_buttons[button] = ButtonState.Pressed
-	
 	#was the button press necessary?
 	var found = false
 	for i in range(0, presses_remaining.size()):
@@ -75,11 +98,6 @@ func handle_note_press_action(button, sound):
 		add_mistake(MistakeType.UnnecessaryPress, null)
 
 func handle_note_release_action(button, sound):
-	if current_buttons[button] == ButtonState.Released || current_buttons[button] == ButtonState.None:
-		return
-		
-	current_buttons[button] = ButtonState.Released
-
 	#was the button release necessary?
 	var found = false
 	for i in range(0, releases_remaining.size()):
@@ -235,7 +253,7 @@ func update_queue(tick_tolerance_low, tick_tolerance_high):
 				var late_releases = []
 				var ignored_releases = []
 				for release in releases_remaining[0]:
-					if current_buttons[release.button] == ButtonState.Pressed || current_buttons[release.button] == ButtonState.Held:
+					if current_sounds.find_last(true) > 0 && (current_buttons[release.button] == ButtonState.Pressed || current_buttons[release.button] == ButtonState.Held):
 						late_releases.push_back(release)
 					else:
 						ignored_releases.push_back(release)
