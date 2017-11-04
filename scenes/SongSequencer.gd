@@ -186,12 +186,12 @@ func update_queue(tick_tolerance_low, tick_tolerance_high):
 			presses_remaining.push_back([])
 			releases_remaining.push_back([])
 			for button in range(0, 4):
-				if new_positions[i][0][button] == class_song.NoteType.Single:
+				if new_positions[i].buttons[button] == class_song.NoteType.Single:
 					presses_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Press, button, start + i))
 					releases_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Release, button, start + i))
-				elif new_positions[i][0][button] == class_song.NoteType.Pressed:
+				elif new_positions[i].buttons[button] == class_song.NoteType.Pressed:
 					presses_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Press, button, start + i))
-				elif new_positions[i][0][button] == class_song.NoteType.Released:
+				elif new_positions[i].buttons[button] == class_song.NoteType.Released:
 					releases_remaining.back().push_back(ButtonEntry.new(ButtonEntryType.Release, button, start + i))
 
 class ButtonEntry:

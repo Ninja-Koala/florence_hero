@@ -42,7 +42,7 @@ _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="Music Bar" parent="." instance=ExtResource( 5 )]
 
-position = Vector2( 1243.19, 530.842 )
+position = Vector2( 1277.44, 530.842 )
 z = -1
 script = ExtResource( 6 )
 _sections_unfolded = [ "Z" ]
