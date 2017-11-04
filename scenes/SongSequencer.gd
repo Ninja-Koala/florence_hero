@@ -2,7 +2,7 @@ extends Node
 
 onready var class_song = load("res://classes/Song.gd")
 
-var ms_per_tick = 100
+var ms_per_tick = 200
 var before_tolerance_ms = 100
 var after_tolerance_ms = 100
 

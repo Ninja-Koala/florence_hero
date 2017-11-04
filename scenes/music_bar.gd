@@ -6,9 +6,9 @@ onready var class_song_reader = load("res://classes/SongReader.gd")
 onready var demo_song_resource = load("res://songs/DemoSong.gd")
 onready var song = load("res://classes/Song.gd")
 onready var single_bar = load("res://scenes/note.tscn")
-onready var bar_begin = load("res://scenes/note_begin.tscn")
-onready var bar_held = load("res://scenes/note_held.tscn")
-onready var bar_end = load("res://scenes/note_end.tscn")
+onready var bar_begin = load("res://scenes/bar_begin.tscn")
+onready var bar_held = load("res://scenes/bar_held.tscn")
+onready var bar_end = load("res://scenes/bar_end.tscn")
 
 var note_bars = []
 var note_bar_pos = []
