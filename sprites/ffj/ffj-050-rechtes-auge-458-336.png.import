@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ffj-14-nase-536-380.png-6f2d70d3018d19f2f5793a9e5ae52e1b.stex"
+path="res://.import/ffj-050-rechtes-auge-458-336.png-69e6679568d82573645b47b519b402b2.stex"
 
 [params]
 
@@ -11,11 +11,11 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
