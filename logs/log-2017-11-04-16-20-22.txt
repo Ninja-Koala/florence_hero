@@ -24,10 +24,6 @@ Registered interface Native mobile
    At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
 **ERROR**: Request for nonexistent InputMap action: face_smile
    At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
 **ERROR**: Request for nonexistent InputMap action: face_eyes_open
    At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
 **ERROR**: Request for nonexistent InputMap action: face_eyes_close
@@ -46,51 +42,9 @@ Registered interface Native mobile
    At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
 **ERROR**: Request for nonexistent InputMap action: face_smile
    At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
+**ERROR**: Request for nonexistent InputMap action: face_eyes_open
    At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-missed: missed
-missed: late
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
+**ERROR**: Request for nonexistent InputMap action: face_eyes_close
    At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
 **ERROR**: Request for nonexistent InputMap action: face_smile
    At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
@@ -118,6 +72,14 @@ missed: late
    At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
 missed: missed
 missed: late
+**ERROR**: Request for nonexistent InputMap action: face_smile
+   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
+**ERROR**: Request for nonexistent InputMap action: face_smile
+   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
+**ERROR**: Request for nonexistent InputMap action: face_smile
+   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
+**ERROR**: Request for nonexistent InputMap action: face_smile
+   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
 **ERROR**: Request for nonexistent InputMap action: face_smile
    At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
 **ERROR**: Request for nonexistent InputMap action: face_smile
@@ -204,158 +166,6 @@ missed: late
    At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
 **ERROR**: Request for nonexistent InputMap action: face_smile
    At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-missed: missed
-missed: late
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-missed: missed
-missed: late
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-missed: missed
-missed: late
-missed: missed
-missed: late
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-missed: missed
-missed: late
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-missed: missed
-missed: late
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-missed: missed
-missed: late
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
-**ERROR**: Request for nonexistent InputMap action: face_smile
-   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
 missed: missed
 missed: late
 missed: missed
@@ -364,6 +174,60 @@ missed: missed
 missed: late
 missed: missed
 missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+missed: missed
+missed: late
+**ERROR**: Request for nonexistent InputMap action: face_smile
+   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
+**ERROR**: Request for nonexistent InputMap action: face_eyes_open
+   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
+**ERROR**: Request for nonexistent InputMap action: face_eyes_close
+   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
+**ERROR**: Request for nonexistent InputMap action: face_smile
+   At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
 **ERROR**: Request for nonexistent InputMap action: face_smile
    At: core/input_map.cpp:172:event_is_action() - Condition ' !E ' is true. returned: false
 **ERROR**: Request for nonexistent InputMap action: face_eyes_open
