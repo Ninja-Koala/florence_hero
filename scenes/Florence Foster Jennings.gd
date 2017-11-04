@@ -19,7 +19,10 @@ var cur_face_position = 0
 
 var eyes_closed = false
 var eye_blink_time = 0
+var eye_move_time = 0
 var eye_pupils_position = 0
+var eye_frequency = 0
+var eye_amplitude = 2
 
 var mouth_closed = false
 
@@ -47,6 +50,7 @@ func eyes_open (state):
 
 
 func eyes_position (state, pos):
+	pos = clamp (pos, 0, 1)
 	if state:
 		orig_eye_left.hide ()
 		orig_eye_right.hide ()
@@ -111,6 +115,14 @@ func recalc_face_tilt ():
 	tilt_face (cur_face_position)
 
 
+func recalc_eye_pos ():
+	var pos = eye_pupils_position + eye_amplitude * sin (eye_frequency * eye_move_time)
+	if eye_frequency > 0.01:
+		eyes_position (true, pos)
+	else:
+		eyes_position (false, pos)
+
+
 func _input (event):
 	if event.is_action_pressed ("face_smile"):
 		smile (true)
@@ -124,15 +136,13 @@ func _input (event):
 		eyes_open (false)
 
 	if event.is_action_pressed ("face_eyes_reset"):
-		eyes_position (false, 0)
+		eye_frequency = 5 - eye_frequency
 
 	if event.is_action_pressed ("face_eyes_left"):
 		eye_pupils_position = clamp (eye_pupils_position + 0.1, 0.0, 1.0)
-		eyes_position (true, eye_pupils_position)
 
 	if event.is_action_pressed ("face_eyes_right"):
 		eye_pupils_position = clamp (eye_pupils_position - 0.1, 0.0, 1.0)
-		eyes_position (true, eye_pupils_position)
 
 	if event.is_action_pressed ("face_nod_reset"):
 		if target_face_position < -0.5:
@@ -153,6 +163,8 @@ func _process (delta):
 	eye_blink_time += delta
 	if eye_blink_time > 4:
 		eye_blink_time = 0
+		
+	eye_move_time += delta
 
 	if eye_blink_time < 3.9 and not eyes_closed:
 		eyelids.hide ()
@@ -160,3 +172,4 @@ func _process (delta):
 		eyelids.show ()
 
 	recalc_face_tilt ()
+	recalc_eye_pos ()

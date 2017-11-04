@@ -33,5 +33,6 @@ func read_song(path):
 		result.add_note(int(elements[0]), int(elements[1]), int(elements[2]), int(elements[3]), int(elements[4]), int(elements[5]), int(elements[6]), elements[7])
 		
 	file.close()
+	result.add_pause(4)
 	print(result.get_length())
 	return result
