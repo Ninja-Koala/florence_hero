@@ -13,7 +13,7 @@ onready var bar_end = load("res://scenes/bar_end.tscn")
 var note_bars = []
 var note_bar_pos = []
 
-var base_pos = Vector2(-360,-185)
+var base_pos = Vector2(-185,-185)
 var x_offset = Vector2(192,0)
 var y_offset = Vector2(0,102)
 
@@ -72,4 +72,4 @@ func _process(delta):
 						note_bars += [bar]
 						note_bar_pos += [pos]
 	for i in range(note_bars.size()):
-		note_bars[i].set_position(note_bar_pos[i] - x_offset * (offset-1))
+		note_bars[i].set_position(note_bar_pos[i] - x_offset * offset)
