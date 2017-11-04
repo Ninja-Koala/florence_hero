@@ -10,13 +10,13 @@
 [ext_resource path="res://sprites/ffj/ffj-050-rechtes-auge-458-336.png" type="Texture" id=8]
 [ext_resource path="res://sprites/ffj/ffj-060-linkes-auge-548-318.png" type="Texture" id=9]
 [ext_resource path="res://sprites/ffj/ffj-070-augenlider-457-317.png" type="Texture" id=10]
-[ext_resource path="res://sprites/ffj/ffj-080-baeckchen-465-409.png" type="Texture" id=11]
-[ext_resource path="res://sprites/ffj/ffj-090-unterlippe-bg-545-451.png" type="Texture" id=12]
-[ext_resource path="res://sprites/ffj/ffj-100-unterlippe-540-450.png" type="Texture" id=13]
-[ext_resource path="res://sprites/ffj/ffj-140-nase-536-380.png" type="Texture" id=14]
-[ext_resource path="res://sprites/ffj/ffj-110-oberlippe-bg-543-431.png" type="Texture" id=15]
-[ext_resource path="res://sprites/ffj/ffj-120-zaehne-399-386.png" type="Texture" id=16]
-[ext_resource path="res://sprites/ffj/ffj-130-oberlippe-534-429.png" type="Texture" id=17]
+[ext_resource path="res://sprites/ffj/ffj-090-unterlippe-bg-545-451.png" type="Texture" id=11]
+[ext_resource path="res://sprites/ffj/ffj-100-unterlippe-540-450.png" type="Texture" id=12]
+[ext_resource path="res://sprites/ffj/ffj-140-nase-536-380.png" type="Texture" id=13]
+[ext_resource path="res://sprites/ffj/ffj-110-oberlippe-bg-543-431.png" type="Texture" id=14]
+[ext_resource path="res://sprites/ffj/ffj-120-zaehne-399-386.png" type="Texture" id=15]
+[ext_resource path="res://sprites/ffj/ffj-130-oberlippe-534-429.png" type="Texture" id=16]
+[ext_resource path="res://sprites/ffj/ffj-080-baeckchen-465-409.png" type="Texture" id=17]
 
 [node name="Florence Foster Jennings" type="Node2D"]
 
@@ -94,26 +94,10 @@ centered = false
 offset = Vector2( 457, 317 )
 _sections_unfolded = [ "Material", "Offset", "Visibility" ]
 
-[node name="Bäckchen" type="Sprite" parent="Gesicht"]
-
-use_parent_material = true
-texture = ExtResource( 11 )
-centered = false
-offset = Vector2( 465, 409 )
-_sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Visibility", "Z" ]
-
-[node name="Bäckchen2" type="Sprite" parent="Gesicht"]
-
-use_parent_material = true
-texture = ExtResource( 11 )
-centered = false
-offset = Vector2( 465, 409 )
-_sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Visibility", "Z" ]
-
 [node name="Unterlippe-Hintergrund" type="Sprite" parent="Gesicht"]
 
 use_parent_material = true
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 centered = false
 offset = Vector2( 545, 451 )
 _sections_unfolded = [ "Material", "Offset" ]
@@ -121,7 +105,7 @@ _sections_unfolded = [ "Material", "Offset" ]
 [node name="Unterlippe" type="Sprite" parent="Gesicht"]
 
 use_parent_material = true
-texture = ExtResource( 13 )
+texture = ExtResource( 12 )
 centered = false
 offset = Vector2( 540, 450 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Transform" ]
@@ -130,7 +114,7 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Transform" ]
 
 visible = false
 use_parent_material = true
-texture = ExtResource( 14 )
+texture = ExtResource( 13 )
 centered = false
 offset = Vector2( 536, 380 )
 _sections_unfolded = [ "Material", "Offset", "Visibility" ]
@@ -138,7 +122,7 @@ _sections_unfolded = [ "Material", "Offset", "Visibility" ]
 [node name="Oberlippe-Hintergrund" type="Sprite" parent="Gesicht"]
 
 use_parent_material = true
-texture = ExtResource( 15 )
+texture = ExtResource( 14 )
 centered = false
 offset = Vector2( 543, 431 )
 _sections_unfolded = [ "Material", "Offset" ]
@@ -146,7 +130,7 @@ _sections_unfolded = [ "Material", "Offset" ]
 [node name="Zähne" type="Sprite" parent="Gesicht"]
 
 use_parent_material = true
-texture = ExtResource( 16 )
+texture = ExtResource( 15 )
 centered = false
 offset = Vector2( 399, 386 )
 _sections_unfolded = [ "Material", "Offset" ]
@@ -154,9 +138,18 @@ _sections_unfolded = [ "Material", "Offset" ]
 [node name="Oberlippe" type="Sprite" parent="Gesicht"]
 
 use_parent_material = true
-texture = ExtResource( 17 )
+texture = ExtResource( 16 )
 centered = false
 offset = Vector2( 534, 429 )
 _sections_unfolded = [ "Material", "Offset", "Transform" ]
+
+[node name="Bäckchen" type="Sprite" parent="Gesicht"]
+
+visible = false
+use_parent_material = true
+texture = ExtResource( 17 )
+centered = false
+offset = Vector2( 465, 409 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Visibility", "Z" ]
 
 
