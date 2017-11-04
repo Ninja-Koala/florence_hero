@@ -26,10 +26,19 @@ func get_notes_in_range(index, count):
 	var result = []
 	for i in range(0, count):
 		var position = positions[index + i]
+		var notes = [NoteType.Released, NoteType.Released, NoteType.Released, NoteType.Released]
+			
 		if position != null:
-			result.push_back(position.note_bars)
-		else:
-			result.push_back(0)
+			if position.note_bars & 1 != 0:
+				notes[0] = Pressed
+			if position.note_bars & 2 != 0:
+				notes[1] = Pressed
+			if position.note_bars & 4 != 0:
+				notes[2] = Pressed
+			if position.note_bars & 8 != 0:
+				notes[3] = Pressed
+			
+		result.push_back(notes)
 
 class SongPosition:
 	var pitch
@@ -40,3 +49,9 @@ class SongPosition:
 		self.pitch = pitch
 		self.sound = sound
 		self.note_bars = note_bars
+
+enum NoteType {
+	Released,
+	Pressed,
+	Held
+}
