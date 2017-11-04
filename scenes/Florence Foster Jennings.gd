@@ -7,10 +7,12 @@ onready var eye_pupils     = $"Gesicht/Pupillen"
 onready var chin           = $"Gesicht/Unterlippe"
 onready var upper_lip      = $"Gesicht/Oberlippe"
 onready var cheeks         = $"Gesicht/Bäckchen"
+onready var face           = $Gesicht
 
 var chin_transform
 var upper_lip_transform
 var eye_pupils_transform
+var face_transform
 
 var eyes_closed = false
 var eye_blink_time = 0
@@ -19,6 +21,12 @@ var eye_pupils_position = 0
 var mouth_closed = false
 
 func _ready():
+	var rot_origin = Vector2 (470, 570)
+	face.transform *= Transform2D (0, rot_origin)
+	for n in face.get_children ():
+		n.transform *= Transform2D (0, -rot_origin)
+		
+	face_transform = face.transform
 	chin_transform = chin.transform
 	upper_lip_transform = upper_lip.transform
 	eye_pupils_transform = eye_pupils.transform
@@ -68,6 +76,14 @@ func smile (state):
 		cheeks.hide ()
 
 
+func tilt_face (pos):
+	var rot_origin = Vector2 (-300, -500)
+	var tr
+	tr = Transform2D (pos * PI, Vector2 (0, 0))
+	face.transform = face_transform * tr
+	
+
+
 func _input (event):
 	if event.is_action_pressed ("face_smile"):
 		smile (true)
@@ -103,4 +119,6 @@ func _process (delta):
 		eyelids.show ()
 
 	open_mouth ((1 + sin (3 * (eye_blink_time / 2.0 * PI))) / 2)
+	tilt_face (0.05 + 0.2 * (sin (3 * (eye_blink_time / 2.0 * PI))) / 2)
+	
 
