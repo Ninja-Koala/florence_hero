@@ -10,6 +10,8 @@ onready var bar_begin = load("res://scenes/bar_begin.tscn")
 onready var bar_held = load("res://scenes/bar_held.tscn")
 onready var bar_end = load("res://scenes/bar_end.tscn")
 
+var color_array = [Color(1,0,0), Color(1,1,0), Color(0,0,1), Color(0,1,0)]
+
 var note_bars = []
 var note_bar_pos = []
 
@@ -40,39 +42,47 @@ func _process(delta):
 		note_bar_pos = []
 		
 		for i in range(4):
-			for j in range(4):
-					if note_array[i].buttons[j] == song.NoteType.Single:
-						print("single")
-						var bar = single_bar.instance()
-						add_child(bar)
-						var pos = base_pos + (i-x_int_offset)*x_offset + (3-j) * y_offset
-						bar.set_position(pos)
-						note_bars += [bar]
-						note_bar_pos += [pos]
-					elif note_array[i].buttons[j] == song.NoteType.Pressed:
-						print("pressed")
-						var bar = bar_begin.instance()
-						add_child(bar)
-						var pos = base_pos + (i-x_int_offset)*x_offset + (3-j) * y_offset
-						bar.set_position(pos)
-						note_bars += [bar]
-						note_bar_pos += [pos]
-					elif note_array[i].buttons[j] == song.NoteType.Held:
-						print("held")
-						var bar = bar_held.instance()
-						add_child(bar)
-						var pos = base_pos + (i-x_int_offset)*x_offset + (3-j) * y_offset
-						bar.set_position(pos)
-						note_bars += [bar]
-						note_bar_pos += [pos]
-					elif note_array[i].buttons[j] == song.NoteType.Released:
-						print("released")
-						var bar = bar_end.instance()
-						add_child(bar)
-						var pos = base_pos + (i-x_int_offset)*x_offset + (3-j) * y_offset
-						bar.set_position(pos)
-						note_bars += [bar]
-						note_bar_pos += [pos]
+			if note_array[i]==null:
+				pass
+			else:
+				var color_index = note_array[i].color
+				for j in range(4):
+						if note_array[i].buttons[j] == song.NoteType.Single:
+							print("single")
+							var bar = single_bar.instance()
+							add_child(bar)
+							var pos = base_pos + (i-x_int_offset)*x_offset + (3-j) * y_offset
+							bar.set_position(pos)
+							note_bars += [bar]
+							note_bar_pos += [pos]
+							bar.get_child(0).set_modulate(color_array[color_index])
+						elif note_array[i].buttons[j] == song.NoteType.Pressed:
+							print("pressed")
+							var bar = bar_begin.instance()
+							add_child(bar)
+							var pos = base_pos + (i-x_int_offset)*x_offset + (3-j) * y_offset
+							bar.set_position(pos)
+							note_bars += [bar]
+							note_bar_pos += [pos]
+							bar.get_child(0).set_modulate(color_array[color_index])
+						elif note_array[i].buttons[j] == song.NoteType.Held:
+							print("held")
+							var bar = bar_held.instance()
+							add_child(bar)
+							var pos = base_pos + (i-x_int_offset)*x_offset + (3-j) * y_offset
+							bar.set_position(pos)
+							note_bars += [bar]
+							note_bar_pos += [pos]
+							bar.get_child(0).set_modulate(color_array[color_index])
+						elif note_array[i].buttons[j] == song.NoteType.Released:
+							print("released")
+							var bar = bar_end.instance()
+							add_child(bar)
+							var pos = base_pos + (i-x_int_offset)*x_offset + (3-j) * y_offset
+							bar.set_position(pos)
+							note_bars += [bar]
+							note_bar_pos += [pos]
+							bar.get_child(0).set_modulate(color_array[color_index])
 	for i in range(note_bars.size()):
 		note_bars[i].set_position(note_bar_pos[i] - x_offset * (offset-1))
 
