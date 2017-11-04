@@ -14,7 +14,22 @@ func _ready():
 	sequencer.initialize(get_node(\"Player\"), demo_song_resource.new())
 
 func _process(delta):
-	sequencer.advance(delta * 1000)"
+	sequencer.advance(delta * 1000)
+
+func _input(event):
+	for i in range(0, 4):
+		if event.is_action_pressed(\"play_tone\" + str(i)):
+			sequencer.set_button_state(i, true)
+	for i in range(0, 2):
+		if event.is_action_pressed(\"play_sound\" + str(i)):
+			pass
+			
+	for i in range(0, 4):
+		if event.is_action_released(\"play_tone\" + str(i)):
+			sequencer.set_button_state(i, false)
+	for i in range(0, 2):
+		if event.is_action_released(\"play_sound\" + str(i)):
+			pass"
 
 [node name="Root" type="Node2D"]
 

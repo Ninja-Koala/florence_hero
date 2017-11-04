@@ -26,7 +26,7 @@ func get_notes_in_range(index, count):
 	var result = []
 	for i in range(0, count):
 		var position
-		if i < positions.size():
+		if index + i < positions.size():
 			 position = positions[index + i]
 		
 		var notes = [NoteType.None, NoteType.None, NoteType.None, NoteType.None]
