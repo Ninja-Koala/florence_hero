@@ -13,7 +13,7 @@ onready var bar_end = load("res://scenes/bar_end.tscn")
 var note_bars = []
 var note_bar_pos = []
 
-var base_pos = Vector2(-360,-185)
+var base_pos = Vector2(-185,-185)
 var x_offset = Vector2(192,0)
 var y_offset = Vector2(0,102)
 
