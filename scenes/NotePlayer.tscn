@@ -15,7 +15,7 @@ volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
-bus = "Master"
+bus = "NotePlayer Bus"
 area_mask = 1
 
 [node name="TonePlayer1" type="AudioStreamPlayer2D" parent="."]
@@ -25,7 +25,7 @@ volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
-bus = "Master"
+bus = "NotePlayer Bus"
 area_mask = 1
 
 

@@ -1,6 +1,6 @@
 extends Node
 
-onready var effect = AudioServer.get_bus_effect(1, 0)
+var effect = AudioServer.get_bus_effect(1, 0)
 var pitch_min = 1.0595
 
 var current_sound = -1
