@@ -9,13 +9,17 @@ var player
 var song
 
 var current_ms = 0
+var current_buttons = [ButtonState.None,  ButtonState.None, ButtonState.None, ButtonState.None]
 
 func initialize(player, song):
 	self.player = player
 	self.song = song
 
 func set_button_state(var button, var new_state):
-	
+	if new_state:
+		current_buttons[button] = ButtonState.Pressed
+	else:
+		current_buttons[button] = ButtonState.Released
 
 func advance(ms):
 	#calculate position before and after the advancement
@@ -34,6 +38,13 @@ func advance(ms):
 	
 	#play the tick
 	song.play_notes_at(player, tick)
+	
+	#normalize button states
+	for i in range(0, 4):
+		if current_buttons[i] == ButtonState.Pressed:
+			current_buttons[i] = ButtonState.Held
+		elif current_buttons[i] == ButtonState.Released:
+			current_buttons[i] = ButtonState.None
 
 func get_current_notes(var count):
 	return song.get_notes_in_range(current_tick(), count)
@@ -48,7 +59,7 @@ func get_score(var buttons):
 	var notes = song.get_notes_in_range(current_tick())[0]
 	return notes == buttons
 
-enum ButtonInputType {
+enum ButtonState {
 	None,
 	Pressed,
 	Held,

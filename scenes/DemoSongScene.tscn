@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/NotePlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/SongSequencer.tscn" type="PackedScene" id=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node2D
+
+onready var demo_song_resource = load(\"res://songs/DemoSong.gd\")
+onready var sequencer = $Sequencer
+
+func _ready():
+	sequencer.initialize(get_node(\"Player\"), demo_song_resource.new())
+
+func _process(delta):
+	sequencer.advance(delta * 1000)"
+
+[node name="Root" type="Node2D"]
+
+script = SubResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+
+[node name="Sequencer" parent="." instance=ExtResource( 2 )]
+
+

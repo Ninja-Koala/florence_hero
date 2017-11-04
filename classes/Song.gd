@@ -42,6 +42,7 @@ func get_notes_in_range(index, count):
 				notes[3] = Single
 			
 		result.push_back(notes)
+	return result
 
 class SongPosition:
 	var pitch
