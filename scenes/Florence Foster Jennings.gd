@@ -14,6 +14,8 @@ var upper_lip_transform
 var eye_pupils_transform
 var face_transform
 
+var face_position = 0
+
 var eyes_closed = false
 var eye_blink_time = 0
 var eye_pupils_position = 0
@@ -77,11 +79,13 @@ func smile (state):
 
 
 func tilt_face (pos):
-	var rot_origin = Vector2 (-300, -500)
-	var tr
-	tr = Transform2D (pos * PI, Vector2 (0, 0))
-	face.transform = face_transform * tr
-	
+	if pos < 0:
+		pos = clamp (pos * 0.075, -0.075, 0)
+	else:
+		pos = clamp (pos * 0.125, 0, 0.125)
+		
+	face.transform = face_transform * Transform2D (pos * PI, Vector2 (70,30) * pos)
+
 
 
 func _input (event):
@@ -107,6 +111,18 @@ func _input (event):
 		eye_pupils_position = clamp (eye_pupils_position - 0.1, 0.0, 1.0)
 		eyes_position (true, eye_pupils_position)
 
+	if event.is_action_pressed ("face_nod_reset"):
+		face_position = 0
+		tilt_face (face_position)
+
+	if event.is_action_pressed ("face_nod_forward"):
+		face_position = clamp (face_position + 0.1, -1.0, 1.0)
+		tilt_face (face_position)
+		
+	if event.is_action_pressed ("face_nod_backward"):
+		face_position = clamp (face_position - 0.1, -1.0, 1.0)
+		tilt_face (face_position)
+
 
 func _process (delta):
 	eye_blink_time += delta
@@ -119,6 +135,4 @@ func _process (delta):
 		eyelids.show ()
 
 	open_mouth ((1 + sin (3 * (eye_blink_time / 2.0 * PI))) / 2)
-	tilt_face (0.05 + 0.2 * (sin (3 * (eye_blink_time / 2.0 * PI))) / 2)
-	
 
