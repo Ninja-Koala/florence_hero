@@ -8,15 +8,19 @@ const NOTE_PRESS_POINTS = 10
 const NOTE_HOLD_POINTS = 5
 const NOTE_RELEASE_POINTS = 2
 
+const MIN_RANDOM = 0
+const MAX_RANDOM = 10
+
 onready var class_song = load("res://classes/Song.gd")
 
-var ms_per_tick = 200
+var ms_per_tick = 20
 var before_tolerance_ms = 100
 var after_tolerance_ms = 100
 
 var punish = true
 
 var player
+var piano_player
 var song
 
 var current_ms = 0
@@ -30,8 +34,9 @@ var finished = false
 
 var current_sounds = [false, false, false, false]
 
-func initialize(player, song):
+func initialize(player, piano_player, song):
 	self.player = player
+	self.piano_player = piano_player
 	self.song = song
 
 func set_sound_state(sound, new_state):
@@ -151,6 +156,7 @@ func advance(ms):
 	#is the song finished?
 	if tick >= song.get_length():
 		player.stop()
+		piano_player.stop()
 		finished = true
 		return
 	
@@ -163,6 +169,10 @@ func advance(ms):
 		#send stage directions
 		if current_note.stage_direction != null:
 			emit_signal("stage_direction", current_note.stage_direction)
+		
+		#play the piano
+		if current_note.sound != -1:
+			piano_player.play(current_note.pitch)
 		
 		#has the user not played the note yet?
 		if punish && current_note.buttons.count(class_song.NoteType.Single) != 0 || current_note.buttons.count(class_song.NoteType.Pressed) != 0 || current_note.buttons.count(class_song.NoteType.Released) != 0:
@@ -213,7 +223,7 @@ func add_mistake(type, entries):
 		print("mistake: unnecessary")
 		#play random note
 		if punish:
-			player.play(randi()%10, randi()%2)
+			player.play(randi() % (MAX_RANDOM - MIN_RANDOM) + MIN_RANDOM, randi() % 4)
 		emit_signal("made_mistake", type)
 	elif type == MistakeType.NoteMissed:
 		print("mistake: missed")
@@ -228,7 +238,7 @@ func add_mistake(type, entries):
 		print("mistake: late")
 		#play random note
 		if punish:
-			player.play(randi()%10, randi()%2)
+			player.play(randi() % (MAX_RANDOM - MIN_RANDOM) + MIN_RANDOM, randi() % 4)
 	elif type == MistakeType.NotHeld:
 		print("mistake: not held")
 	elif type == MistakeType.NotReleased:
