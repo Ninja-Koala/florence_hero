@@ -14,6 +14,10 @@ onready var bar_begin = load("res://scenes/bar_begin.tscn")
 onready var bar_held = load("res://scenes/bar_held.tscn")
 onready var bar_end = load("res://scenes/bar_end.tscn")
 
+onready var song_selector = get_node("/root/song_selector")
+
+var song_path = "res://songs/DemoSong1.csv"
+
 var color_array = [Color(1,0,0), Color(1,1,0), Color(0,0,1), Color(0,1,0)]
 
 var note_bars = []
@@ -27,9 +31,12 @@ var x_int_offset = 2
 
 func _ready():
 	set_process(true)
+	
+	song_path = song_selector.song_path
 
 	var song_reader = class_song_reader.new()
-	song_seq.initialize(note_player, piano_player, chord_player, song_reader.read_song("res://songs/DemoSong1.csv"))
+	
+	song_seq.initialize(note_player, piano_player, chord_player, song_reader.read_song(song_path))
 
 func _process(delta):
 	var changed = song_seq.advance(delta*1000)
