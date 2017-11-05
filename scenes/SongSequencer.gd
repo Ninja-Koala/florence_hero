@@ -87,8 +87,7 @@ func handle_note_press_action(button, sound):
 				#play the note
 				var note = song.get_entry_at(entry.tick)
 				if note != null && note.sound != -1:
-					player.stop()
-					player.play(note.pitch, note.sound)
+					player.play(note.pitch, note.sound, true)
 				
 			#remove the necessity to press the button
 			erase_button_from_array(presses_remaining[i], button)
@@ -155,7 +154,7 @@ func advance(ms):
 		
 	#is the song finished?
 	if tick >= song.get_length():
-		player.stop()
+		player.stop_all()
 		piano_player.stop()
 		finished = true
 		return
@@ -184,7 +183,7 @@ func advance(ms):
 		
 		#was a button press or a single note needed here?
 		if found && (current_note.buttons.count(class_song.NoteType.Single) != 0 || current_note.buttons.count(class_song.NoteType.Pressed) != 0):
-			player.stop()
+			player.stop_planned()
 		
 		#has the user held the button correctly?
 		for i in range(current_note.buttons.size()):
@@ -197,10 +196,9 @@ func advance(ms):
 		if !found:
 			var sound = current_note.sound
 			if current_note.sound >= 0:
-				player.stop()
-				player.play(current_note.pitch, current_note.sound)
+				player.play(current_note.pitch, current_note.sound, true)
 			elif current_note.sound == -2:
-				player.stop()
+				player.stop_planned()
 	
 	#normalize button states
 	for i in range(0, 4):
@@ -228,7 +226,7 @@ func add_mistake(type, entries):
 		print("mistake: unnecessary")
 		#play random note
 		if punish:
-			player.play(randi() % (MAX_RANDOM - MIN_RANDOM) + MIN_RANDOM, randi() % 4)
+			player.play(randi() % (MAX_RANDOM - MIN_RANDOM) + MIN_RANDOM, randi() % 4, false)
 		emit_signal("made_mistake", type)
 	elif type == MistakeType.NoteMissed:
 		print("mistake: missed")
@@ -238,12 +236,12 @@ func add_mistake(type, entries):
 	elif type == MistakeType.ReleasedTooEarly:
 		print("mistake: early")
 		if punish:
-			player.stop()
+			player.stop_all()
 	elif type == MistakeType.ReleasedTooLate:
 		print("mistake: late")
 		#play random note
 		if punish:
-			player.play(randi() % (MAX_RANDOM - MIN_RANDOM) + MIN_RANDOM, randi() % 4)
+			player.play(randi() % (MAX_RANDOM - MIN_RANDOM) + MIN_RANDOM, randi() % 4, false)
 	elif type == MistakeType.NotHeld:
 		print("mistake: not held")
 	elif type == MistakeType.NotReleased:
@@ -268,7 +266,7 @@ func update_queue(tick_tolerance_low, tick_tolerance_high):
 				var late_releases = []
 				var ignored_releases = []
 				for release in releases_remaining[0]:
-					if current_sounds.find_last(true) > 0 && (current_buttons[release.button] == ButtonState.Pressed || current_buttons[release.button] == ButtonState.Held):
+					if current_sounds.find_last(true) == release.sound && (current_buttons[release.button] == ButtonState.Pressed || current_buttons[release.button] == ButtonState.Held):
 						late_releases.push_back(release)
 					else:
 						ignored_releases.push_back(release)
