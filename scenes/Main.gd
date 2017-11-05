@@ -2,6 +2,7 @@ extends Node2D
 
 onready var menu_scene = load("res://scenes/menu.tscn")
 onready var menubutton = $"MenuButton"
+onready var ffj = $"Florence Foster Jennings"
 
 func _input(event):
 	if event.is_action_pressed ("fullscreen"):
@@ -16,4 +17,5 @@ func _on_MenuButton_pressed():
 
 
 func _on_SongSequencer_song_finished():
+	ffj.smile (true)
 	menubutton.show ()
