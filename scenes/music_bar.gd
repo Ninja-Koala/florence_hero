@@ -16,7 +16,7 @@ onready var bar_end = load("res://scenes/bar_end.tscn")
 
 onready var song_selector = get_node("/root/song_selector")
 
-var song_path = "res://songs/DemoSong1.csv"
+var song_path = "res://songs/DemoSong1.txt"
 
 var color_array = [Color(1,0,0), Color(1,1,0), Color(0,0,1), Color(0,1,0)]
 
