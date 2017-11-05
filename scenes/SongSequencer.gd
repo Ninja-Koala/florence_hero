@@ -13,7 +13,7 @@ const MAX_RANDOM = 10
 
 onready var class_song = load("res://classes/Song.gd")
 
-var ms_per_tick = 20
+var ms_per_tick = 200
 var before_tolerance_ms = 100
 var after_tolerance_ms = 100
 
@@ -187,9 +187,11 @@ func advance(ms):
 			player.stop()
 		
 		#has the user held the button correctly?
-		if current_note.buttons.count(class_song.NoteType.Held) != 0:
-			#award points for holding the note
-			emit_signal("score_points", NOTE_HOLD_POINTS)
+		for i in range(current_note.buttons.size()):
+			if current_note.buttons[i] == class_song.NoteType.Held:
+				if current_buttons[i] == ButtonState.Pressed || current_buttons[i] == ButtonState.Held:
+					#award points for holding the note
+					emit_signal("score_points", NOTE_HOLD_POINTS)
 		
 		#play the note
 		if !found:
