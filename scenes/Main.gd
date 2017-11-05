@@ -8,14 +8,12 @@ func _input(event):
 		OS.set_window_fullscreen (not OS.is_window_fullscreen ())
 
 func _ready():
-#	menubutton.hide ()
-	pass
+	menubutton.hide ()
 
 
 func _on_MenuButton_pressed():
 	get_tree().change_scene_to(menu_scene)
 
 
-#falscher event...
-func _on_NotePlayer_stopped():
+func _on_SongSequencer_song_finished():
 	menubutton.show ()

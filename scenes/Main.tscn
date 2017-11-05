@@ -322,6 +322,8 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [connection signal="made_mistake" from="SongSequencer" to="Florence Foster Jennings" method="on_mistake"]
 
+[connection signal="song_finished" from="SongSequencer" to="." method="_on_SongSequencer_song_finished"]
+
 [connection signal="note_played" from="NotePlayer" to="Florence Foster Jennings" method="on_note_played"]
 
 [connection signal="stopped" from="NotePlayer" to="Florence Foster Jennings" method="on_note_stopped"]
