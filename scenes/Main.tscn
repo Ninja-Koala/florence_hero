@@ -1,16 +1,17 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://sprites/curtain-shadow.png" type="Texture" id=1]
-[ext_resource path="res://sprites/wallpaper.png" type="Texture" id=2]
-[ext_resource path="res://sprites/stage.jpg" type="Texture" id=3]
-[ext_resource path="res://scenes/Florence Foster Jennings.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/music_bar.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/music_bar.gd" type="Script" id=6]
-[ext_resource path="res://score.gd" type="Script" id=7]
-[ext_resource path="res://scenes/SongSequencer.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/NotePlayer.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/PianoPlayer.tscn" type="PackedScene" id=10]
-[ext_resource path="res://apollo-asm.regular.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://scenes/Main.gd" type="Script" id=1]
+[ext_resource path="res://sprites/curtain-shadow.png" type="Texture" id=2]
+[ext_resource path="res://sprites/wallpaper.png" type="Texture" id=3]
+[ext_resource path="res://sprites/stage.jpg" type="Texture" id=4]
+[ext_resource path="res://scenes/Florence Foster Jennings.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/music_bar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/music_bar.gd" type="Script" id=7]
+[ext_resource path="res://score.gd" type="Script" id=8]
+[ext_resource path="res://scenes/SongSequencer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/NotePlayer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/PianoPlayer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://apollo-asm.regular.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="DynamicFontData" id=1]
 
@@ -30,17 +31,18 @@ _sections_unfolded = [ "Font", "Resource", "Settings" ]
 size = 80
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 11 )
+font_data = ExtResource( 12 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Mainroot" type="Node2D"]
 
 position = Vector2( 0, -3.79474 )
+script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Curtain" type="Sprite" parent="."]
 
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "Z" ]
 
@@ -48,7 +50,7 @@ _sections_unfolded = [ "Offset", "Transform", "Z" ]
 
 self_modulate = Color( 0.68692, 0.80038, 0.960938, 1 )
 z = -10
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
@@ -58,21 +60,21 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z" ]
 
 position = Vector2( 7.55432, 848.573 )
 z = -1
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "Z" ]
 
-[node name="Florence Foster Jennings" parent="." instance=ExtResource( 4 )]
+[node name="Florence Foster Jennings" parent="." instance=ExtResource( 5 )]
 
 position = Vector2( 10.0701, -40.2805 )
 scale = Vector2( 0.9, 0.9 )
 _sections_unfolded = [ "Material", "Transform" ]
 
-[node name="Music Bar" parent="." instance=ExtResource( 5 )]
+[node name="Music Bar" parent="." instance=ExtResource( 6 )]
 
 position = Vector2( 1277.44, 530.842 )
 z = -1
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Z" ]
 
 [node name="Score" type="Label" parent="."]
@@ -95,14 +97,14 @@ text = "Score: 0000"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="SongSequencer" parent="." instance=ExtResource( 8 )]
+[node name="SongSequencer" parent="." instance=ExtResource( 9 )]
 
-[node name="NotePlayer" parent="." instance=ExtResource( 9 )]
+[node name="NotePlayer" parent="." instance=ExtResource( 10 )]
 
-[node name="PianoPlayer" parent="." instance=ExtResource( 10 )]
+[node name="PianoPlayer" parent="." instance=ExtResource( 11 )]
 
 [node name="A-Key" type="Label" parent="."]
 
