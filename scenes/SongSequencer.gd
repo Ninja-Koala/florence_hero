@@ -17,7 +17,7 @@ var ms_per_tick = 200
 var before_tolerance_ms = 100
 var after_tolerance_ms = 100
 
-var punish = false
+var punish = true
 
 var player
 var piano_player
@@ -232,8 +232,8 @@ func add_mistake(type, entries):
 		emit_signal("made_mistake", type)
 	elif type == MistakeType.NoteMissed:
 		print("mistake: missed")
-		if punish:
-			player.stop()
+		#if punish:
+			#player.stop()
 		emit_signal("made_mistake", type)
 	elif type == MistakeType.ReleasedTooEarly:
 		print("mistake: early")
