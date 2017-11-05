@@ -289,4 +289,4 @@ _sections_unfolded = [ "Theme", "custom_colors", "custom_fonts" ]
 
 [connection signal="stopped" from="NotePlayer" to="Florence Foster Jennings" method="on_note_stopped"]
 
-
+[connection signal="made_mistake" from="SongSequencer" to="Florence Foster Jennings" method="on_mistake"]
