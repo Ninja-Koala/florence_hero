@@ -127,8 +127,34 @@ texture = ExtResource( 4 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "Z" ]
 
+[node name="ExitButton" type="Button" parent="."]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1529.0
+margin_top = 924.0
+margin_right = 1782.0
+margin_bottom = 1058.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 4 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Exit"
+flat = false
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
 [connection signal="button_down" from="Button1" to="." method="_on_Button1_button_down"]
 
 [connection signal="button_down" from="Button2" to="." method="_on_Button2_button_down"]
+
+[connection signal="pressed" from="ExitButton" to="." method="on_exit_button_pressed"]
 
 
