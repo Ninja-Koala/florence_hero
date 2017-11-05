@@ -4,7 +4,7 @@ signal note_played(pitch, sound)
 signal stopped()
 
 var effect = AudioServer.get_bus_effect(1, 0)
-var pitch_min = 1.0595
+const PITCH_MIN = 1.0595
 
 var current_sound = -1
 var current_pitch = -1
@@ -17,7 +17,7 @@ func play(pitch, sound):
 		return
 	
 	if sound >= 0:
-		effect.set_pitch_scale(pow(pitch_min, pitch))
+		effect.set_pitch_scale(pow(PITCH_MIN, pitch))
 		get_node("TonePlayer" + str(sound)).play(0)
 	
 	current_sound = sound

@@ -4,6 +4,7 @@ onready var main = get_node("Main")
 
 onready var song_seq = get_node("/root/Mainroot/SongSequencer")
 onready var note_player = get_node("/root/Mainroot/NotePlayer")
+onready var piano_player = get_node("/root/Mainroot/PianoPlayer")
 onready var class_song_reader = load("res://classes/SongReader.gd")
 onready var demo_song_resource = load("res://songs/DemoSong.gd")
 onready var song = load("res://classes/Song.gd")
@@ -27,7 +28,7 @@ func _ready():
 	set_process(true)
 
 	var song_reader = class_song_reader.new()
-	song_seq.initialize(note_player, song_reader.read_song("res://songs/DemoSong1.csv"))
+	song_seq.initialize(note_player, piano_player, song_reader.read_song("res://songs/DemoSong1.csv"))
 
 func _process(delta):
 	var changed = song_seq.advance(delta*1000)
