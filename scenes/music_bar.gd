@@ -18,7 +18,7 @@ var color_array = [Color(1,0,0), Color(1,1,0), Color(0,0,1), Color(0,1,0)]
 var note_bars = []
 var note_bar_pos = []
 
-var base_pos = Vector2(-380,-185)
+var base_pos = Vector2(-450,-185)
 var x_offset = Vector2(192,0)
 var y_offset = Vector2(0,102)
 
