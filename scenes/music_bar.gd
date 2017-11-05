@@ -36,7 +36,7 @@ func _ready():
 
 	var song_reader = class_song_reader.new()
 	
-	song_seq.initialize(note_player, piano_player, chord_player, song_reader.read_song(song_path))
+	song_seq.initialize(note_player, piano_player, chord_player, song_reader.read_song(song_path, chord_player.get_max_chord_size()))
 
 func _process(delta):
 	var changed = song_seq.advance(delta*1000)

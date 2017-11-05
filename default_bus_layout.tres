@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=6 format=2]
+[gd_resource type="AudioBusLayout" load_steps=7 format=2]
 
 [sub_resource type="AudioEffectPitchShift" id=1]
 
@@ -25,6 +25,11 @@ pitch_scale = 1.0
 resource_name = "PitchShift"
 pitch_scale = 1.0
 
+[sub_resource type="AudioEffectPitchShift" id=6]
+
+resource_name = "PitchShift"
+pitch_scale = 1.0
+
 [resource]
 
 bus/0/name = "Master"
@@ -45,7 +50,7 @@ bus/2/name = "PianoPlayer Bus"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = -4.8
+bus/2/volume_db = -18.7
 bus/2/send = "Master"
 bus/2/effect/0/effect = SubResource( 2 )
 bus/2/effect/0/enabled = true
@@ -79,4 +84,12 @@ bus/6/volume_db = 0.0
 bus/6/send = "ChordPlayer Main"
 bus/6/effect/0/effect = SubResource( 5 )
 bus/6/effect/0/enabled = true
+bus/7/name = "ChordPlayer Bus 3"
+bus/7/solo = false
+bus/7/mute = false
+bus/7/bypass_fx = false
+bus/7/volume_db = 0.0
+bus/7/send = "ChordPlayer Main"
+bus/7/effect/0/effect = SubResource( 6 )
+bus/7/effect/0/enabled = true
 

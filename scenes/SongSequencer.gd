@@ -3,6 +3,7 @@ extends Node
 signal stage_direction(name)
 signal score_points(points)
 signal made_mistake(type)
+signal song_finished()
 
 const NOTE_PRESS_POINTS = 10
 const NOTE_HOLD_POINTS = 5
@@ -158,7 +159,9 @@ func advance(ms):
 	if tick >= song.get_length():
 		player.stop_all()
 		piano_player.stop()
+		chord_player.stop()
 		finished = true
+		emit_signal("song_finished")
 		return
 	
 	#get note to play
