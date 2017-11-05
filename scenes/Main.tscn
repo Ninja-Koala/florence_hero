@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://sprites/curtain-shadow.png" type="Texture" id=2]
@@ -11,7 +11,8 @@
 [ext_resource path="res://scenes/SongSequencer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/NotePlayer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/PianoPlayer.tscn" type="PackedScene" id=11]
-[ext_resource path="res://apollo-asm.regular.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://scenes/ChordPlayer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://apollo-asm.regular.ttf" type="DynamicFontData" id=13]
 
 [sub_resource type="DynamicFontData" id=1]
 
@@ -31,7 +32,7 @@ _sections_unfolded = [ "Font", "Resource", "Settings" ]
 size = 80
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 12 )
+font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Mainroot" type="Node2D"]
@@ -104,6 +105,8 @@ _sections_unfolded = [ "custom_fonts" ]
 [node name="NotePlayer" parent="." instance=ExtResource( 10 )]
 
 [node name="PianoPlayer" parent="." instance=ExtResource( 11 )]
+
+[node name="ChordPlayer" parent="." instance=ExtResource( 12 )]
 
 [node name="A-Key" type="Label" parent="."]
 
@@ -285,8 +288,10 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Theme", "custom_colors", "custom_fonts" ]
 
+[connection signal="made_mistake" from="SongSequencer" to="Florence Foster Jennings" method="on_mistake"]
+
 [connection signal="note_played" from="NotePlayer" to="Florence Foster Jennings" method="on_note_played"]
 
 [connection signal="stopped" from="NotePlayer" to="Florence Foster Jennings" method="on_note_stopped"]
 
-[connection signal="made_mistake" from="SongSequencer" to="Florence Foster Jennings" method="on_mistake"]
+

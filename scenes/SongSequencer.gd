@@ -21,6 +21,7 @@ var punish = true
 
 var player
 var piano_player
+var chord_player
 var song
 
 var current_ms = 0
@@ -34,9 +35,10 @@ var finished = false
 
 var current_sounds = [false, false, false, false]
 
-func initialize(player, piano_player, song):
+func initialize(player, piano_player, chord_player, song):
 	self.player = player
 	self.piano_player = piano_player
+	self.chord_player = chord_player
 	self.song = song
 
 func set_sound_state(sound, new_state):
@@ -172,6 +174,15 @@ func advance(ms):
 		#play the piano
 		if current_note.sound >= 0:
 			piano_player.play(current_note.pitch)
+		
+		#play the chord
+		if current_note.chord != null:
+			if current_note.chord.size() == 0:
+				#stop the current chord
+				chord_player.stop()
+			else:
+				#play the next chord
+				chord_player.play_chord(current_note.chord)
 		
 		#has the user not played the note yet?
 		if punish && (current_note.buttons.count(class_song.NoteType.Single) != 0 || current_note.buttons.count(class_song.NoteType.Pressed) != 0 || current_note.buttons.count(class_song.NoteType.Released) != 0):
