@@ -230,8 +230,6 @@ func add_mistake(type, entries):
 		emit_signal("made_mistake", type)
 	elif type == MistakeType.NoteMissed:
 		print("mistake: missed")
-		#if punish:
-			#player.stop()
 		emit_signal("made_mistake", type)
 	elif type == MistakeType.ReleasedTooEarly:
 		print("mistake: early")
@@ -239,9 +237,11 @@ func add_mistake(type, entries):
 			player.stop_all()
 	elif type == MistakeType.ReleasedTooLate:
 		print("mistake: late")
-		#play random note
 		if punish:
-			player.play(randi() % (MAX_RANDOM - MIN_RANDOM) + MIN_RANDOM, randi() % 4, false)
+			#is the player currently playing the right note?
+			if player.is_playing_planned():
+				#play random note
+				player.play(randi() % (MAX_RANDOM - MIN_RANDOM) + MIN_RANDOM, randi() % 4, false)
 	elif type == MistakeType.NotHeld:
 		print("mistake: not held")
 	elif type == MistakeType.NotReleased:

@@ -16,6 +16,9 @@ func _ready():
 	for i in range(4):
 		players.push_back(get_node("TonePlayer" + str(i)))
 
+func is_playing_planned():
+	return current_planned && current_sound >= 0
+
 func play(pitch, sound, planned):
 	current_planned = planned
 	
