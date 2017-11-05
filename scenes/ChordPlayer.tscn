@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/ChordPlayer.gd" type="Script" id=1]
+[ext_resource path="res://sounds/fixed/background-piano.wav" type="AudioStream" id=2]
+
+[node name="ChordPlayer" type="Node"]
+
+script = ExtResource( 1 )
+
+[node name="NotePlayer0" type="AudioStreamPlayer2D" parent="."]
+
+stream = ExtResource( 2 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "ChordPlayer Bus 0"
+area_mask = 1
+
+[node name="NotePlayer1" type="AudioStreamPlayer2D" parent="."]
+
+stream = ExtResource( 2 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "ChordPlayer Bus 1"
+area_mask = 1
+
+[node name="NotePlayer2" type="AudioStreamPlayer2D" parent="."]
+
+stream = ExtResource( 2 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "ChordPlayer Bus 2"
+area_mask = 1
+
+
