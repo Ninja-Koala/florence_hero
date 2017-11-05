@@ -19,12 +19,12 @@ func read_song(path):
 		var elements = [line[0], line[1], line[2], line[3], line[4], line[5], line[6], line[7]]
 		
 		#special characters
-		if elements[0] == "":
-			elements[0] = 0
-			elements[1] = -1
-		elif elements[0] == "x":
-			elements[0] = 0
-			elements[1] = -1
+		if elements[1] == "":
+			elements[0] = "0"
+			elements[1] = "-1"
+		if elements[1] == "x":
+			elements[0] = "0"
+			elements[1] = "-2"
 		
 		#empty stage directions
 		if elements[7] == "":

@@ -17,7 +17,7 @@ var ms_per_tick = 200
 var before_tolerance_ms = 100
 var after_tolerance_ms = 100
 
-var punish = true
+var punish = false
 
 var player
 var piano_player
@@ -171,11 +171,11 @@ func advance(ms):
 			emit_signal("stage_direction", current_note.stage_direction)
 		
 		#play the piano
-		if current_note.sound != -1:
+		if current_note.sound >= 0:
 			piano_player.play(current_note.pitch)
 		
 		#has the user not played the note yet?
-		if punish && current_note.buttons.count(class_song.NoteType.Single) != 0 || current_note.buttons.count(class_song.NoteType.Pressed) != 0 || current_note.buttons.count(class_song.NoteType.Released) != 0:
+		if punish && (current_note.buttons.count(class_song.NoteType.Single) != 0 || current_note.buttons.count(class_song.NoteType.Pressed) != 0 || current_note.buttons.count(class_song.NoteType.Released) != 0):
 			for press_location in presses_remaining:
 				for entry in press_location:
 					if entry.tick == tick:
@@ -195,9 +195,12 @@ func advance(ms):
 		
 		#play the note
 		if !found:
-			if current_note.sound != -1:
+			var sound = current_note.sound
+			if current_note.sound >= 0:
 				player.stop()
 				player.play(current_note.pitch, current_note.sound)
+			elif current_note.sound == -2:
+				player.stop()
 	
 	#normalize button states
 	for i in range(0, 4):
